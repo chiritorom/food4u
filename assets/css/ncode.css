@@ -1,0 +1,407 @@
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body, input, textarea {
+	font-family: "Open Sans", Sans-serif;
+	background: #f2f2f2;
+	
+}
+
+a {
+	text-decoration: none;
+}
+
+ul, li {
+	list-style: none;
+	
+}
+
+.nc-100 {
+	width: 100%;
+}
+
+input,
+textarea {
+	border: 0;
+}
+
+/* LOGIN */
+
+#nc-login {
+	poisiton: relative;
+}
+
+#nc-login form {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+#nc-login form .nc-login-form {
+	width: 300px;
+	padding: 20px;
+}
+
+#nc-login form .nc-login-form label,
+#nc-login form .nc-login-form input {
+	width: 100%;
+	margin-bottom: 10px;
+	
+}
+
+#nc-login form .nc-login-form label {
+	display: block;
+	font-weight: 400;
+}
+
+#nc-login form .nc-login-form input[type="text"],
+#nc-login form .nc-login-form input[type="password"] {
+	font-weight: 300;
+	background: #fff;
+	border: 0;
+	box-shadow: 0 0 5px #eee;
+	padding: 5px 10px;
+	font-family: "Open Sans", Sans-serif;
+	font-size: 13px;
+	border-radius: 5px;
+	outline: 0;
+	line-height: 13px;
+}
+
+#nc-login form .nc-login-form input[type="text"]:focus,
+#nc-login form .nc-login-form input[type="password"]:focus {
+	border: 0;
+}
+
+header {
+	right: 0;
+	left: 0;
+	top: 0;
+	background: #fff;
+	position: fixed;
+	text-align: right;
+	box-shadow: 0 0 10px #aaa;
+}
+
+header #logo {
+	width: 250px;
+	background: #fff;
+	text-align: center;
+	float: left;
+	padding: 10px 0;
+	border-right: 1px solid #ddd;
+}
+
+header #logo a {
+	display: block;
+	height: 40px;
+}
+
+header #logo a img {
+	height: 100%;
+}
+
+header #breadcrumb {
+	float: left;
+}
+
+header #options {
+	border-left: 1px solid #ddd;
+	float: right;
+}
+
+header #options a {
+	padding: 0 20px;
+	line-height: 60px;
+	color: #555;
+	font-weight: 300;
+	display: inline-block;
+}
+
+header #breadcrumb a {
+	text-transform: uppercase;
+	padding: 0 20px;
+	line-height: 60px;
+	color: #555;
+	font-weight: 600;
+	display: inline-block;
+}
+
+aside {
+	width: 250px;
+	background: #fff;
+	position: fixed;
+	top: 60px;
+	bottom: 0;
+	border-top: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	overflow-y: scroll;
+	z-index: 1000;
+}
+
+aside::-webkit-scrollbar {
+    width: .5em;
+}
+ 
+aside::-webkit-scrollbar-track {
+    background-color: #ccc;
+}
+ 
+aside::-webkit-scrollbar-thumb {
+	border-radius: 100px;
+  	background-color: #444;
+}
+
+aside .profile {
+	text-align: center;
+	padding: 10px 0;
+	
+}
+
+aside .profile a {
+	color: #444;
+	display: block;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+aside .profile a i {
+	background: #eee;
+	padding: 10px 15px;
+	border: 1px solid #444;
+	border-radius: 50%;
+	float: left;
+	margin-right: 10px;
+}
+
+aside .profile a p {
+	text-align: left;
+	font-size: 13px;
+}
+
+aside h2 {
+	border-top: 1px solid #ddd;
+	font-size: 15px;
+	font-weight: 600;
+	display: block;
+	padding: 10px;
+	background: transparent;
+	color: #444;
+}
+
+aside ul li a {
+	font-size: 13px;
+	font-weight: 400;
+	display: block;
+	padding: 10px 10px 10px 20px;
+	background: transparent;
+	color: #444;
+}
+
+aside ul li a:hover {
+	background: #E0A652;
+	color: #fff;
+}
+
+aside ul li a.active {
+	background: #E0A652;
+	color: #fff;
+}
+
+#nc-main {
+	margin-left: 250px;
+	margin-top: 60px;
+	padding-top: 20px;
+}
+
+#nc-main .panel {
+	margin: auto;
+	width: 800px;
+}
+
+.table-plate {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	position: relative;
+	padding: 10px 0;
+	border-bottom: 1px solid #ddd;
+}
+
+.table-plate img {
+	height: 84px;
+	border: 2px solid #fff;
+	box-shadow: 0 0 10px #ddd;
+}
+
+.table-plate span {
+	padding: 20px;
+	font-weight: 300;
+}
+
+.table-plate a {
+	padding: 5px 10px;
+	background: #f2f2f2;
+	color: #000;
+	opacity: 0;
+}
+
+.table-plate a:hover {
+	background: #E0A652;
+	color: #fff;
+}
+
+.table-plate a i {
+	width: 15px;
+}
+
+.table-plate .group-action,
+.table-plate .group-delete {
+	position: absolute;
+	right: 20px;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	transform: translateY(-50%);
+	
+}
+
+.table-plate .group-action {
+	z-index: 9;
+}
+
+.table-plate .group-delete {
+	z-index: 8; 
+}
+
+.table-plate:hover {
+	background: #fff;
+}
+
+.table-plate:hover a {
+	opacity: 1;
+}
+
+#modal-plate {
+	background: rgba(0,0,0,.5);
+	position: fixed;
+	left: 250px;
+	top: 60px;
+	right: 0;
+	bottom: 0;
+	z-index: 9999;
+	padding-top: 40px;
+	display: none;
+}
+
+#modal-plate .loading {
+	text-align: center;
+}
+
+#modal-plate .loading i {
+	color: #fff;
+}
+
+#modal-plate .form-plate {
+	background: #fff;
+	width: 600px;
+	padding: 20px;
+	margin: 0 auto;
+	
+}
+
+#modal-plate .form-plate form {
+	display: flex;
+	justify-content: space-between;
+}
+
+#modal-plate .form-plate .img-plate {
+	width: 50%;
+	padding: 10px;
+	text-align: center;
+}
+
+#modal-plate .form-plate .img-plate img {
+	width: 100%;
+}
+
+#modal-plate .form-plate .img-plate .file {
+	width: 100%;
+	height: 50px;
+	background: #E0A652;
+	position: relative;
+	overflow: hidden;
+}
+
+#modal-plate .form-plate .img-plate .file p {
+	line-height: 50px;
+	color: #fff;
+	font-weight: 400;
+	position: absolute;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	-moz-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	-o-transform: translateX(-50%);
+	transform: translateX(-50%);
+}
+
+#modal-plate .form-plate .img-plate input[type="file"] {
+	width: 100%;
+	height: 50px;
+	display: block;
+	opacity: 0;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+#modal-plate .form-plate .content-form {
+	width: 50%;
+	padding: 10px;
+}
+
+#modal-plate .form-plate .content-form label {
+	width: 100%;
+	display: block;
+	margin-bottom: 5px;
+	font-weight: 600;
+}
+
+#modal-plate .form-plate .content-form input,
+#modal-plate .form-plate .content-form textarea {
+	margin-bottom: 5px;
+	background: #f2f2f2;
+	padding: 5px;
+	width: 100%;
+	font-weight: 300;
+}
+
+#modal-plate .form-plate .content-form textarea {
+	resize: none;
+	height: 100px;
+}
+
+#modal-plate .form-plate .button-close {
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+}
+
+#modal-plate .form-plate .button-close a {
+	color: #000;
+}
+
+#modal-plate .form-plate .button-close a:hover {
+	color: #777;
+}
