@@ -1,3 +1,7 @@
+$('aside ul > li a ').filter(function() {
+        return this.href.split('/')[6] == location.href.split('/')[6];
+    }).addClass('active');
+
 $(".table-plate .group-action a:last-child").on("click", function(e) {
 	e.preventDefault();
 

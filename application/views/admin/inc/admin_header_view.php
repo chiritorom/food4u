@@ -34,21 +34,21 @@
 
 		<ul>
 			<li><a href="<?= base_url() ?>admin/platos"><i class="fa fa-book" aria-hidden="true"></i> Platos</a></li>
-			<li><a href=""><i class="fa fa-book" aria-hidden="true"></i> Slider</a></a></li>
-			<li><a href=""><i class="fa fa-book" aria-hidden="true"></i> Cómo funciona</a></a></li>
-			<li><a href=""><i class="fa fa-book" aria-hidden="true"></i> Nosotros</a></a></li>
-			<li><a href=""><i class="fa fa-book" aria-hidden="true"></i> Blog</a></a></li>
-			<li><a href=""><i class="fa fa-book" aria-hidden="true"></i> Contacto</a></a></li>
+			<li><a href="<?= base_url() ?>"><i class="fa fa-book" aria-hidden="true"></i> Slider</a></a></li>
+			<li><a href="<?= base_url() ?>"><i class="fa fa-book" aria-hidden="true"></i> Cómo funciona</a></a></li>
+			<li><a href="<?= base_url() ?>"><i class="fa fa-book" aria-hidden="true"></i> Nosotros</a></a></li>
+			<li><a href="<?= base_url() ?>"><i class="fa fa-book" aria-hidden="true"></i> Blog</a></a></li>
+			<li><a href="<?= base_url() ?>"><i class="fa fa-book" aria-hidden="true"></i> Contacto</a></a></li>
 		</ul>
 
 		<h2>Páginas</h2>
 
 		<ul>
-			<li><a href="" ><i class="fa fa-book" aria-hidden="true"></i> Inicio</a></li>
-			<li><a href=""><i class="fa fa-book" aria-hidden="true"></i> Nuestros platos</a></a></li>
-			<li><a href=""><i class="fa fa-book" aria-hidden="true"></i> Cómo funciona</a></a></li>
-			<li><a href=""><i class="fa fa-book" aria-hidden="true"></i> Nosotros</a></a></li>
-			<li><a href=""><i class="fa fa-book" aria-hidden="true"></i> Blog</a></a></li>
-			<li><a href=""><i class="fa fa-book" aria-hidden="true"></i> Contacto</a></a></li>
+			<li><a href="<?= base_url() ?>" ><i class="fa fa-book" aria-hidden="true"></i> Inicio</a></li>
+			<li><a href="<?= base_url() ?>"><i class="fa fa-book" aria-hidden="true"></i> Nuestros platos</a></a></li>
+			<li><a href="<?= base_url() ?>"><i class="fa fa-book" aria-hidden="true"></i> Cómo funciona</a></a></li>
+			<li><a href="<?= base_url() ?>"><i class="fa fa-book" aria-hidden="true"></i> Nosotros</a></a></li>
+			<li><a href="<?= base_url() ?>"><i class="fa fa-book" aria-hidden="true"></i> Blog</a></a></li>
+			<li><a href="<?= base_url() ?>"><i class="fa fa-book" aria-hidden="true"></i> Contacto</a></a></li>
 		</ul>
 	</aside>

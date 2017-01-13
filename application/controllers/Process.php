@@ -24,7 +24,7 @@ class Process extends CI_Controller {
 
             <form action="">
               <div class="img-plate">
-                <img src="' . base_url() . 'assets/images/this-week01.jpg" alt="">
+                <img src="' . base_url() . 'assets/images/' . $result->image . '" alt="">
                 <div class="file">
                   <p>Elegir archivo</p>
 
@@ -105,16 +105,16 @@ class Process extends CI_Controller {
 
     $this->load->library('upload', $config);
 
-    if ( ! $this->upload->do_upload("imagen")) {
+    if (!$this->upload->do_upload("imagen")) {
       $error = array('error' => $this->upload->display_errors());
-
     } else {
       $data = array('upload_data' => $this->upload->data());
+      $imagen = $this->upload->data("file_name");
+      $this->Plate->addPlate($nombre, $precio, $descripcion, $imagen);
     }
 
-    $imagen = $this->upload->data("file_name");
-
-    $this->Plate->addPlate($nombre, $precio, $descripcion, $imagen);
+    header("Location: " . base_url() . "admin/platos");
+    
   }
 
   public function eliminar_plato() {
