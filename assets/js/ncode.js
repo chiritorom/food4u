@@ -1,3 +1,19 @@
+// FUNCTIONS 
+
+function readURLVHC(input, img) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            img.attr('src', e.target.result);
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$('aside ul li a').filter(function() {
+    return this.href.split('/')[5] == location.href.split('/')[5];
+}).addClass('active');
+
 $(".table-plate .group-action a:last-child").on("click", function(e) {
 	e.preventDefault();
 
@@ -47,6 +63,10 @@ $(".add-plate button").on("click", function() {
 		success: function(resp) {
 			$("#modal-plate").html(resp);
 				$("#modal-plate").toggle();
+
+			$('.img-plate input').change(function() {
+		      readURLVHC(this, $(".img-plate img")); 
+		     });
 			
 			$("#modal-plate .form-plate .button-close a, #modal-plate .form-plate .content-form button:last-child").on("click", function(e) {
 				e.preventDefault();
@@ -55,6 +75,27 @@ $(".add-plate button").on("click", function() {
 		}
 	});
 });
+
+$(".table-plate .group-delete a:first-child").on("click", function(e) {
+	e.preventDefault();
+
+	var $me = $(this);
+	var $id = $me.attr("data-id");
+
+	$.ajax({
+		url: $me.attr("data-action"),
+		method: "post",
+		data: {
+			id: $id
+		},
+		success: function(resp) {
+			alert("eliminado");
+			location.reload();
+		}
+	});
+});
+
+
 
 
 
