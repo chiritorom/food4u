@@ -34,4 +34,19 @@ class Plate extends CI_Model {
 		$this->db->update('plate', $data);
 	}
 
+	public function updatePlate($id, $nombre, $precio, $descripcion, $imagen) {
+		$data = array(
+		        'name' => $nombre,
+		        'price' => $precio,
+		        'description' => $descripcion
+		);
+
+		if($imagen != "") {
+			$data['image'] = $imagen;
+		}
+
+		$this->db->where('idPlate', $id);
+		$this->db->update('plate', $data);
+	}
+
 }
