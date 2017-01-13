@@ -22,7 +22,7 @@
 					<div class="group-delete">
 						<a href="#" data-id="' . $plate->idPlate . '"><i class="fa fa-check" aria-hidden="true"></i></a>
 						<a href="#"><i class="fa fa-close" aria-hidden="true"></i></a>
-					</div>
+					</div> 
 				</div>';
 				endforeach;
 				?>
