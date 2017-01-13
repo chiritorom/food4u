@@ -698,3 +698,52 @@ footer .copyright h3 {
 		width: 100%;
 	}
 }
+
+/* PAGE 404 */
+
+@import url(https://fonts.googleapis.com/css?family=Noto+Sans:400,700);
+
+			html {
+				background: url(back.jpg) no-repeat center fixed; 
+  				background-size: cover;
+			}
+
+			h1 {
+				color: #8A9597;
+				font-size: 100px;
+				font-weight: 700;
+				font-family: 'Noto Sans', sans-serif;
+				line-height: 15px;
+			}	
+
+			h2 {
+				color: #8A9597;
+				font-size: 50px;
+				font-weight: 400;
+				font-family: 'Noto Sans', sans-serif;
+			}
+
+			#texto {
+				text-align: center;
+			}
+
+			button {
+    			background-color: #E0A652;
+    			font-size: 20px;
+				font-family: 'Noto Sans', sans-serif;
+    			color: #ffffff; 
+    			border: none;
+    			padding: 15px 40px;
+    			cursor: pointer;
+    			box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    			-webkit-transition: all .3s ease-in-out;
+    			-moz-transition: all .3s ease-in-out;
+    			-ms-transition: all .3s ease-in-out;
+    			-o-transition: all .3s ease-in-out;
+    			transition: all .3s ease-in-out;
+			}
+
+			button:hover {
+    			background: #8A9597;
+    			color: #ffffff;
+    		}
