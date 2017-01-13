@@ -52,6 +52,10 @@ $(".table-plate .group-action a:first-child").on("click", function(e) {
 				e.preventDefault();
 				$("#modal-plate").toggle();
 			});
+
+			$('.img-plate input').change(function() {
+		      readURLVHC(this, $(".img-plate img")); 
+		     });
 		}
 	});
 });
