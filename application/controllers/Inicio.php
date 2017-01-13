@@ -26,7 +26,7 @@ class Inicio extends CI_Controller {
 			
 			$this->load->view('page_template_view', $data);
 		else:
-			echo "error";
+			$this->load->view('404');
 		endif;
 	}
 	

@@ -1,6 +1,18 @@
-$('aside ul > li a ').filter(function() {
-        return this.href.split('/')[6] == location.href.split('/')[6];
-    }).addClass('active');
+// FUNCTIONS 
+
+function readURLVHC(input, img) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            img.attr('src', e.target.result);
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$('aside ul li a').filter(function() {
+    return this.href.split('/')[5] == location.href.split('/')[5];
+}).addClass('active');
 
 $(".table-plate .group-action a:last-child").on("click", function(e) {
 	e.preventDefault();
@@ -52,26 +64,9 @@ $(".add-plate button").on("click", function() {
 			$("#modal-plate").html(resp);
 				$("#modal-plate").toggle();
 
-			$('.img-plate input').change(function(e) {
-		      addImage(e); 
+			$('.img-plate input').change(function() {
+		      readURLVHC(this, $(".img-plate img")); 
 		     });
-
-		     function addImage(e){
-		      var file = e.target.files[0],
-		      imageType = /image.*/;
-		    
-		      if (!file.type.match(imageType))
-		       return;
-		  
-		      var reader = new FileReader();
-		      reader.onload = fileOnload;
-		      reader.readAsDataURL(file);
-		     }
-		  
-		     function fileOnload(e) {
-		      var result=e.target.result;
-		      $('.img-plate img').attr("src",result);
-		     }
 			
 			$("#modal-plate .form-plate .button-close a, #modal-plate .form-plate .content-form button:last-child").on("click", function(e) {
 				e.preventDefault();
