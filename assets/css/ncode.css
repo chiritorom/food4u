@@ -90,6 +90,7 @@ header {
 	position: fixed;
 	text-align: right;
 	box-shadow: 0 0 10px #aaa;
+	z-index: 1000;
 }
 
 header #logo {
