@@ -38,7 +38,7 @@ echo '
         <div class="item inicio-sesion">
             <h2>¿Tienes cuenta?</h2>
 
-            <form action="' . base_url() . 'processuser/usuario">
+            <form action="' . base_url() . 'processUser/usuario">
                 <input type="email" name="email" placeholder="Correo electrónico" required>
                 <input type="password" name="password" placeholder="Contraseña" required>
                 <button type="submit">Iniciar sesión en F4U</button>
@@ -52,7 +52,7 @@ echo '
             <h2>Regístrate</h2>
             <label>Este es el primer paso para el gran cambio</label>
 
-            <form action="' . base_url() . 'processuser/agregar_nuevo_usuario">
+            <form action="' . base_url() . 'processUser/agregar_nuevo_usuario">
                 <input type="email" name="email" placeholder="Correo electrónico" required>
                 <button type="submit">Registrarme</button>
             </form>

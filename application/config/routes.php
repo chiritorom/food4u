@@ -52,7 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'inicio/page';
 $route['404_override'] = 'Error404';
 $route['translate_uri_dashes'] = FALSE;
-$route['logout'] = 'processuser/logout';
+$route['logout'] = 'processUser/logout';
 $route['f4u-admin'] = 'Admin';
 $route['(:any)'] = 'inicio/page/$1';
 
