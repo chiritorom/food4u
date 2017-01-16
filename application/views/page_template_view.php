@@ -284,6 +284,13 @@
 				        </div>  
 				    </article>';
 			    	break;
+			    case 9:
+			    	if(isset($_SESSION["UserClient"]) && $_SESSION["UserClient"] == TRUE):
+			    		echo "Mi perfíl";
+			    	else:
+			    		header("Location: " . base_url());
+		    		endif;
+			    	break;
         	endswitch;
         endforeach;
         ?>

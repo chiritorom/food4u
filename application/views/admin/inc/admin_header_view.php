@@ -18,7 +18,7 @@
 		</div>
 
 		<div id="options">
-			<a href="">Cerrar sesión</a>
+			<a href="<?= base_url() ?>admin/logout">Cerrar sesión</a>
 		</div>
 	</header>
 

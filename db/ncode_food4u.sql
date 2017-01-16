@@ -1,24 +1,23 @@
-
 -- phpMyAdmin SQL Dump
--- version 3.5.2.2
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Servidor: localhost
--- Tiempo de generación: 11-01-2017 a las 15:02:33
--- Versión del servidor: 10.0.28-MariaDB-wsrep
--- Versión de PHP: 5.2.17
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 16-01-2017 a las 22:45:39
+-- Versión del servidor: 10.1.19-MariaDB
+-- Versión de PHP: 5.6.28
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `u660241010_f4u`
+-- Base de datos: `ncode_food4u`
 --
 
 -- --------------------------------------------------------
@@ -27,16 +26,13 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `data`
 --
 
-CREATE TABLE IF NOT EXISTS `data` (
-  `idData` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `data` (
+  `idData` int(11) NOT NULL,
   `idPage` int(11) DEFAULT NULL,
   `position` int(11) DEFAULT NULL,
   `data` text,
-  `idTemplate` int(11) DEFAULT NULL,
-  PRIMARY KEY (`idData`),
-  KEY `FK_Data_Page_idx` (`idPage`),
-  KEY `FK_Data_Template_idx` (`idTemplate`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+  `idTemplate` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `data`
@@ -50,7 +46,8 @@ INSERT INTO `data` (`idData`, `idPage`, `position`, `data`, `idTemplate`) VALUES
 (5, 1, 5, 'No hay datos', 5),
 (6, 2, 1, 'No hay datos', 6),
 (8, 3, 1, 'No hay datos', 7),
-(9, 4, 1, 'No hay datos', 8);
+(9, 4, 1, 'No hay datos', 8),
+(10, 9, 1, NULL, 9);
 
 -- --------------------------------------------------------
 
@@ -58,16 +55,14 @@ INSERT INTO `data` (`idData`, `idPage`, `position`, `data`, `idTemplate`) VALUES
 -- Estructura de tabla para la tabla `page`
 --
 
-CREATE TABLE IF NOT EXISTS `page` (
-  `idPage` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `page` (
+  `idPage` int(11) NOT NULL,
   `name` varchar(45) DEFAULT NULL,
   `url` varchar(45) DEFAULT NULL,
   `position` int(11) DEFAULT NULL,
   `idPageType` int(11) DEFAULT NULL,
-  `state` int(11) DEFAULT '1',
-  PRIMARY KEY (`idPage`),
-  KEY `FK_Page_PageType_idx` (`idPageType`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+  `state` int(11) DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `page`
@@ -81,7 +76,8 @@ INSERT INTO `page` (`idPage`, `name`, `url`, `position`, `idPageType`, `state`) 
 (5, 'Blog', 'blog', 5, 2, 1),
 (6, 'Contacto', 'contacto', 6, 2, 1),
 (7, 'Inicia sesión', '#', 1, 1, 1),
-(8, 'Mis platos', '#', 2, 1, 1);
+(8, 'Mis platos', '#', 2, 1, 1),
+(9, 'Perfil', 'perfil', 3, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -89,11 +85,10 @@ INSERT INTO `page` (`idPage`, `name`, `url`, `position`, `idPageType`, `state`) 
 -- Estructura de tabla para la tabla `pagetype`
 --
 
-CREATE TABLE IF NOT EXISTS `pagetype` (
-  `idPageType` int(11) NOT NULL AUTO_INCREMENT,
-  `type` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`idPageType`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+CREATE TABLE `pagetype` (
+  `idPageType` int(11) NOT NULL,
+  `type` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `pagetype`
@@ -109,24 +104,36 @@ INSERT INTO `pagetype` (`idPageType`, `type`) VALUES
 -- Estructura de tabla para la tabla `plate`
 --
 
-CREATE TABLE IF NOT EXISTS `plate` (
-  `idPlate` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `plate` (
+  `idPlate` int(11) NOT NULL,
   `name` varchar(45) DEFAULT NULL,
   `price` decimal(5,2) DEFAULT NULL,
   `image` varchar(45) DEFAULT NULL,
   `url` varchar(45) DEFAULT NULL,
   `description` text,
   `date` datetime DEFAULT NULL,
-  PRIMARY KEY (`idPlate`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+  `state` int(11) DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `plate`
 --
 
-INSERT INTO `plate` (`idPlate`, `name`, `price`, `image`, `url`, `description`, `date`) VALUES
-(1, 'Plato 01', '9.00', 'this-week01.jpg', 'plato-01', 'Descipcion del plato', '2016-12-25 03:42:53'),
-(2, 'Plato 02', '16.00', 'this-week01.jpg', 'plato-02', 'Descripciiooooooon', '2017-01-08 01:30:00');
+INSERT INTO `plate` (`idPlate`, `name`, `price`, `image`, `url`, `description`, `date`, `state`) VALUES
+(1, 'Plato 01', '9.00', 'this-week01.jpg', 'plato-01', 'Descipcion del plato', '2016-12-25 03:42:53', 1),
+(2, 'Plato 02', '16.00', 'this-week01.jpg', 'plato-02', 'Descripciiooooooon', '2017-01-08 01:30:00', 1),
+(4, 'Plato03', '20.00', 'thumb.jpg', NULL, 'asddd', NULL, 0),
+(5, 'sdf', '0.00', 'thumb1.jpg', NULL, 'sdf', '2017-01-13 01:22:25', 0),
+(6, 'asd', '0.00', 'thumb2.jpg', NULL, 'we', '2017-01-12 19:27:00', 0),
+(7, 'asd', '34.00', 'Plato-comida.jpg', NULL, 'asd', '2017-01-12 23:39:21', 0),
+(8, 'fsdf', '56.00', 'fondo.jpg', NULL, '34', '2017-01-12 23:39:53', 0),
+(9, 'asd', '0.00', 'thumb3.jpg', NULL, '34', '2017-01-12 23:41:14', 0),
+(10, 'asd', '34.00', 'thumb4.jpg', NULL, 'asd', '2017-01-12 23:42:30', 0),
+(11, 'asd', '45.00', 'thumb5.jpg', NULL, 'asdd', '2017-01-12 23:46:17', 0),
+(12, 'hhh', '45.00', 'thumb6.jpg', NULL, 'asdsd', '2017-01-12 23:46:34', 0),
+(13, 'Prueba', '45.60', 'thumb7.jpg', NULL, 'asdd', '2017-01-12 23:50:53', 0),
+(14, 'Plato034', '45.00', 'Plato-comida5.jpg', NULL, 'deeees', '2017-01-13 14:40:15', 1),
+(15, 'Plato55', '45.00', 'Plato-comida4.jpg', NULL, 'Pruebaa23\r\n', '2017-01-13 15:08:04', 1);
 
 -- --------------------------------------------------------
 
@@ -134,15 +141,12 @@ INSERT INTO `plate` (`idPlate`, `name`, `price`, `image`, `url`, `description`, 
 -- Estructura de tabla para la tabla `purchase`
 --
 
-CREATE TABLE IF NOT EXISTS `purchase` (
+CREATE TABLE `purchase` (
   `idPurchase` int(11) NOT NULL,
-  `idUserClient` int(11) DEFAULT NULL,
   `idPlate` int(11) DEFAULT NULL,
   `quantity` int(11) DEFAULT NULL,
   `date` datetime(6) DEFAULT NULL,
-  PRIMARY KEY (`idPurchase`),
-  KEY `FK_Purchase_UserClient_idx` (`idUserClient`),
-  KEY `FK_Purchase_Plate_idx` (`idPlate`)
+  `idUserClient` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -151,11 +155,10 @@ CREATE TABLE IF NOT EXISTS `purchase` (
 -- Estructura de tabla para la tabla `template`
 --
 
-CREATE TABLE IF NOT EXISTS `template` (
-  `idTemplate` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`idTemplate`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+CREATE TABLE `template` (
+  `idTemplate` int(11) NOT NULL,
+  `name` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `template`
@@ -169,7 +172,8 @@ INSERT INTO `template` (`idTemplate`, `name`) VALUES
 (5, 'blg-img-ttl-prgph'),
 (6, 'img-btn-ttl-prgph'),
 (7, 'icn-ttl-prgph-img'),
-(8, 'ttl-prgph-img');
+(8, 'ttl-prgph-img'),
+(9, 'perfil');
 
 -- --------------------------------------------------------
 
@@ -177,13 +181,12 @@ INSERT INTO `template` (`idTemplate`, `name`) VALUES
 -- Estructura de tabla para la tabla `user`
 --
 
-CREATE TABLE IF NOT EXISTS `user` (
-  `idUser` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `user` (
+  `idUser` int(11) NOT NULL,
   `firstName` varchar(45) DEFAULT NULL,
   `LastName` varchar(45) DEFAULT NULL,
-  `email` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`idUser`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+  `email` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `user`
@@ -198,14 +201,12 @@ INSERT INTO `user` (`idUser`, `firstName`, `LastName`, `email`) VALUES
 -- Estructura de tabla para la tabla `useradmin`
 --
 
-CREATE TABLE IF NOT EXISTS `useradmin` (
-  `idUserAdmin` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `useradmin` (
+  `idUserAdmin` int(11) NOT NULL,
   `username` varchar(45) DEFAULT NULL,
   `password` varchar(45) DEFAULT NULL,
-  `IdUser` int(11) DEFAULT NULL,
-  PRIMARY KEY (`idUserAdmin`),
-  KEY `FK_UserAdmin_User_idx` (`IdUser`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+  `IdUser` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `useradmin`
@@ -220,12 +221,128 @@ INSERT INTO `useradmin` (`idUserAdmin`, `username`, `password`, `IdUser`) VALUES
 -- Estructura de tabla para la tabla `userclient`
 --
 
-CREATE TABLE IF NOT EXISTS `userclient` (
+CREATE TABLE `userclient` (
   `idUserClient` int(11) NOT NULL,
   `password` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`idUserClient`)
+  `idUser` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `userclient`
+--
+
+INSERT INTO `userclient` (`idUserClient`, `password`, `idUser`) VALUES
+(1, '123456', 1);
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `data`
+--
+ALTER TABLE `data`
+  ADD PRIMARY KEY (`idData`),
+  ADD KEY `FK_Data_Page_idx` (`idPage`),
+  ADD KEY `FK_Data_Template_idx` (`idTemplate`);
+
+--
+-- Indices de la tabla `page`
+--
+ALTER TABLE `page`
+  ADD PRIMARY KEY (`idPage`),
+  ADD KEY `FK_Page_PageType_idx` (`idPageType`);
+
+--
+-- Indices de la tabla `pagetype`
+--
+ALTER TABLE `pagetype`
+  ADD PRIMARY KEY (`idPageType`);
+
+--
+-- Indices de la tabla `plate`
+--
+ALTER TABLE `plate`
+  ADD PRIMARY KEY (`idPlate`);
+
+--
+-- Indices de la tabla `purchase`
+--
+ALTER TABLE `purchase`
+  ADD PRIMARY KEY (`idPurchase`),
+  ADD KEY `FK_Purchase_Plate_idx` (`idPlate`),
+  ADD KEY `FK_Purchase_UserClient_idx` (`idUserClient`);
+
+--
+-- Indices de la tabla `template`
+--
+ALTER TABLE `template`
+  ADD PRIMARY KEY (`idTemplate`);
+
+--
+-- Indices de la tabla `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`idUser`);
+
+--
+-- Indices de la tabla `useradmin`
+--
+ALTER TABLE `useradmin`
+  ADD PRIMARY KEY (`idUserAdmin`),
+  ADD KEY `FK_UserAdmin_User_idx` (`IdUser`);
+
+--
+-- Indices de la tabla `userclient`
+--
+ALTER TABLE `userclient`
+  ADD PRIMARY KEY (`idUserClient`),
+  ADD KEY `FK_UserClient_User_idx` (`idUser`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `data`
+--
+ALTER TABLE `data`
+  MODIFY `idData` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT de la tabla `page`
+--
+ALTER TABLE `page`
+  MODIFY `idPage` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT de la tabla `pagetype`
+--
+ALTER TABLE `pagetype`
+  MODIFY `idPageType` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT de la tabla `plate`
+--
+ALTER TABLE `plate`
+  MODIFY `idPlate` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+--
+-- AUTO_INCREMENT de la tabla `template`
+--
+ALTER TABLE `template`
+  MODIFY `idTemplate` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT de la tabla `user`
+--
+ALTER TABLE `user`
+  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT de la tabla `useradmin`
+--
+ALTER TABLE `useradmin`
+  MODIFY `idUserAdmin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT de la tabla `userclient`
+--
+ALTER TABLE `userclient`
+  MODIFY `idUserClient` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- Restricciones para tablas volcadas
 --
@@ -255,6 +372,12 @@ ALTER TABLE `purchase`
 --
 ALTER TABLE `useradmin`
   ADD CONSTRAINT `FK_UserAdmin_User` FOREIGN KEY (`IdUser`) REFERENCES `user` (`idUser`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `userclient`
+--
+ALTER TABLE `userclient`
+  ADD CONSTRAINT `FK_UserClient_User` FOREIGN KEY (`idUser`) REFERENCES `user` (`idUser`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

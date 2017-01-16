@@ -33,14 +33,57 @@ $(document).ready(function(){
 	]
 
   });
-/*
-  $("#login").on("click", function(e) {
+
+  $(".menu a#inicia-sesion").on("click", function(e) {
   	e.preventDefault();
-  	$("#form-login").fadeIn();
+  	$("#login").fadeIn();
+  	$('body').addClass('stop-scrolling');
   });
 
-  $(".close-form-login a").on("click", function(e) {
+  $("#login .form-login .close a").on("click", function(e) {
   	e.preventDefault();
-  	$("#form-login").fadeOut();
-  });*/
+  	$("#login").fadeOut();
+  	$('body').removeClass('stop-scrolling');
+  });
+
+  $(".registro form").on("submit", function(e) {
+  	e.preventDefault();
+  	var $me = $(this);
+  	var data_form = $me.serialize();
+
+  	$.ajax({
+		url: $me.attr("action"),
+		method: "post",
+		data: data_form,
+		success: function(resp) {
+			if(resp == "true") {
+				alert("Registrado correctamente");
+				window.location.replace("perfil");
+			} else {
+				alert("Correo ya existe");
+			}
+		}
+	});
+  });
+
+  $(".inicio-sesion form").on("submit", function(e) {
+  	e.preventDefault();
+  	var $me = $(this);
+  	var data_form = $me.serialize();
+
+  	$.ajax({
+		url: $me.attr("action"),
+		method: "post",
+		data: data_form,
+		success: function(resp) {
+			
+			if(resp == "true") {
+				alert("Ha iniciado sesión correctamente");
+				window.location.replace("perfil");
+			} else {
+				alert("Usuario y/o contraseña incorrecto");
+			}
+		}
+	});
+  });
 });

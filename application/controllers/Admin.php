@@ -30,6 +30,18 @@ class Admin extends CI_Controller {
 		endif;
 	}
 
+	public function logout() {
+		session_start();
+
+		if(isset($_SESSION['user_admin_state']) && $_SESSION['user_admin_state'] == TRUE) {
+
+			$_SESSION['user_admin_state'] = FALSE;
+			header("Location: " . base_url() . "f4u-admin");
+		} else {
+			$this->load->view("404");
+		}
+	}
+
 	public function dashboard($page = "") {
 		session_start();
 
@@ -39,7 +51,7 @@ class Admin extends CI_Controller {
 
 			$this->load->view('admin/dashboard_view', $data);
 
-		} else echo "error";
+		} else $this->load->view("404");
 	}
 
 	public function platos($plate = "") {
@@ -57,7 +69,7 @@ class Admin extends CI_Controller {
 			$this->load->view('admin/plate_view', $data);
 
 		} else {
-			 echo "error";
+			$this->load->view("404");
 		}
 	}
 }
