@@ -570,6 +570,63 @@ header .submenu a:hover {
 	border-radius: 10px;
 }
 
+#ncode .profile #tabs {
+	display: flex;
+}
+
+#ncode .profile #tabs ul {
+	margin: 0;
+	padding: 0;
+	width: 200px;
+	text-align: center;
+}
+
+#ncode .profile #tabs ul li {
+	list-style: none;
+}
+
+#ncode .profile #tabs ul li a {
+	text-decoration: none;
+	color: #fff;
+	background: #F37C20;
+	display: block;
+	padding: 10px 0;
+	font-weight: 400;
+	font-size: 15px;
+	border-bottom: 1px solid #fff;
+}
+
+#ncode .profile #tabs .content-profile {
+	padding: 10px;
+	width: 800px;
+}
+
+#ncode .profile #tabs .content-profile .form-profile form {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+#ncode .profile #tabs .content-profile .form-profile form .group-input {
+	width: 49%;
+}
+
+#ncode .profile #tabs .content-profile .form-profile form .group-input label {
+	display: block;
+	width: 100%;
+	margin-bottom: 10px;
+	color: #F37C20;
+}
+
+#ncode .profile #tabs .content-profile .form-profile form .group-input input[type="text"],
+#ncode .profile #tabs .content-profile .form-profile form .group-input input[type="email"],
+#ncode .profile #tabs .content-profile .form-profile form .group-input input[type="password"] {
+	width: 100%;
+	margin-bottom: 10px;
+	background: #f2f2f2;
+	border: 0;
+	padding: 5px;
+}
 
 /* FOOTER */ 
 

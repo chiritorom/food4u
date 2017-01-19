@@ -285,8 +285,140 @@
 				    </article>';
 			    	break;
 			    case 9:
-			    	if(isset($_SESSION["UserClient"]) && $_SESSION["UserClient"] == TRUE):
-			    		echo "Mi perfíl";
+			    	if($this->session->has_userdata('user_logged_in') && $this->session->userdata('user_logged_in') == TRUE):
+			    		echo '<section class="profile">
+								<div class="container">
+									<div id="tabs">
+									  <ul>
+									    <li><a href="#tabs-1">Mis datos personales</a></li>
+									    <li><a href="#tabs-2">Mi informe nutricional</a></li>
+									    <li><a href="#tabs-3">Mi plan nutricional</a></li>
+									    <li><a href="#tabs-4">Mis direcciones</a></li>
+									    <li><a href="#tabs-5">Mi historial de pedidos</a></li>
+									    <li><a href="#tabs-6">Mis vales</a></li>
+									    <li><a href="#tabs-7">Mis alertas</a></li>
+									  </ul>
+									  <div class="content-profile">
+										  <div id="tabs-1">
+										    <h2>DATOS PERSONALES</h2>
+
+										    <div class="form-profile">
+										    	<form action="' . base_url() . 'processUser/actualizar_usuario">
+
+										    		<div class="group-input">
+										    			<label>Nombre</label>
+										    			<input type="text" name="nombre" value="' . $userData->firstName . '">
+										    		</div>
+
+										    		<div class="group-input">
+										    			<label>Apellido Paterno</label>
+										    			<input type="text" name="apaterno" value="' . $userData->primaryLastName . '">
+										    		</div>
+									    			
+										    		<div class="group-input">
+										    			<label>Apellido Materno</label>
+										    			<input type="text" name="amaterno" value="' . $userData->secondLastName . '">
+										    		</div>
+
+										    		<div class="group-input">
+										    			<label>Género</label>';
+										    			foreach ($findAllGender->result() as $gender):
+										    				if($gender->idGender == $userData->idGender):
+											    				echo '
+												    		<input type="radio" name="genero" value="' . $gender->idGender . '" checked>' . $gender->description;
+												    		else:
+												    			echo '
+												    		<input type="radio" name="genero" value="' . $gender->idGender . '">' . $gender->description;
+												    		endif;
+											    		endforeach;
+											    		echo '
+										    		</div>
+
+										    		<div class="group-input">
+										    			<label>Fecha de nacimiento</label>
+										    			<input type="text" name="fecha" value="' . $userData->birthday . '">
+										    		</div>
+
+										    		<div class="group-input">
+										    			<label>Móvil</label>
+										    			<input type="text" name="movil" value="' . $userData->mobile . '">
+										    		</div>
+
+									    			<div class="group-input">
+										    			<label>Correo electrónico</label>
+										    			<input type="email" name="email" value="' . $userData->email . '">
+										    		</div>
+
+									    			<div class="group-input">
+										    			<label>Contraseña (mínimo 8 caractéres)</label>
+										    			<input type="password" name="contrasena">
+										    		</div>
+
+										    		<input type="submit" value="Guardar">
+										    	</form>
+										    </div>
+
+										  </div>
+										  <div id="tabs-2">
+										    <h2>MI INFORME NUTRICIONAL</h2>
+
+										    <div class="form-profile">
+										    	<form action="' . base_url() . 'processUser/actualizar_usuario">
+
+										    		<div class="group-input">
+										    			<label>Peso (kgs)</label>
+										    			<input type="text" name="nombre" value="' . $userData->weight . '">
+										    		</div>
+
+										    		<div class="group-input">
+										    			<label>Altura (cm)</label>
+										    			<input type="text" name="apaterno" value="' . $userData->height . '">
+										    		</div>
+									    			
+										    		<div class="group-input">
+										    			<label>Edad</label>
+										    			<input type="text" name="amaterno" value="' . $userData->age . '">
+										    		</div>
+
+										    		<div class="group-input">
+										    			<label>Género</label>';
+										    			foreach ($findAllGender->result() as $gender):
+										    				if($gender->idGender == $userData->idGender):
+											    				echo '
+												    		<input type="radio" name="genero" value="' . $gender->idGender . '" checked>' . $gender->description;
+												    		else:
+												    			echo '
+												    		<input type="radio" name="genero" value="' . $gender->idGender . '">' . $gender->description;
+												    		endif;
+											    		endforeach;
+											    		echo '
+										    		</div>
+
+										    		<div class="group-input">
+										    			<label>Actividad física</label>
+										    			<input type="text" name="fecha" value="' . $userData->physicalActivity . '">
+										    		</div>
+
+										    		<div class="group-input"></div>
+
+										    		<input type="submit" value="Guardar">
+										    	</form>
+										    </div>
+										  </div>
+										  <div id="tabs-3">
+										    <h2>DIETA RECOMENDADA: DETOX</h2>
+
+
+										  </div>
+										  <div id="tabs-4">
+										    <h2>Mis direcciones</h2>
+
+
+										  </div>
+									  </div>
+									</div>
+								</div>
+							</section>';
 			    	else:
 			    		header("Location: " . base_url());
 		    		endif;

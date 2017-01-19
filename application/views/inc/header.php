@@ -1,10 +1,10 @@
 <header>
     <div class="container">
         <nav class="menu">
-            <?php session_start();
-            if(!isset($_SESSION["UserClient"]) || $_SESSION["UserClient"] == FALSE): 
+            <?php 
+            if(!$this->session->has_userdata('user_logged_in') || $this->session->userdata('user_logged_in') == FALSE): 
                 echo '<a href="#" id="inicia-sesion">Inicia sesión</a>';
-            elseif(isset($_SESSION["UserClient"]) && $_SESSION["UserClient"] == TRUE):
+            elseif($this->session->has_userdata('user_logged_in') && $this->session->userdata('user_logged_in') == TRUE):
              echo '<a href="' . base_url() . 'perfil">Mi perfíl</a>
                    <a href="' . base_url() . 'logout">Cerrar sesión</a>';
             endif;

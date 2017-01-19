@@ -30,6 +30,7 @@ class User extends CI_Model {
 			$this->db->insert('user', $data);
 			session_start();
 			$_SESSION["UserClient"] = TRUE;
+			$_SESSION["UserEmail"] = $email;
 			echo "true";
 		else:
 			echo "false";

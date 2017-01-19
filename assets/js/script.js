@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	$( "#tabs" ).tabs();
   $('.slides').slick({
     infinite: true,
   	slidesToShow: 3,
@@ -83,6 +84,22 @@ $(document).ready(function(){
 			} else {
 				alert("Usuario y/o contraseña incorrecto");
 			}
+		}
+	});
+  });
+
+  $(".profile #tabs-1 form").on("submit", function(e) {
+  	e.preventDefault();
+
+  	var $me = $(this);
+  	
+  	$.ajax({
+		url: $me.attr("action"),
+		method: "post",
+		data: $me.serialize(),
+		success: function(resp) {
+			
+			alert(resp);
 		}
 	});
   });

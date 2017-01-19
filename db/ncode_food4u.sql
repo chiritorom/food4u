@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-01-2017 a las 22:45:39
+-- Tiempo de generación: 19-01-2017 a las 18:22:08
 -- Versión del servidor: 10.1.19-MariaDB
 -- Versión de PHP: 5.6.28
 
@@ -48,6 +48,25 @@ INSERT INTO `data` (`idData`, `idPage`, `position`, `data`, `idTemplate`) VALUES
 (8, 3, 1, 'No hay datos', 7),
 (9, 4, 1, 'No hay datos', 8),
 (10, 9, 1, NULL, 9);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `gender`
+--
+
+CREATE TABLE `gender` (
+  `idGender` int(11) NOT NULL,
+  `description` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `gender`
+--
+
+INSERT INTO `gender` (`idGender`, `description`) VALUES
+(1, 'Masculino'),
+(2, 'Femenino');
 
 -- --------------------------------------------------------
 
@@ -184,7 +203,8 @@ INSERT INTO `template` (`idTemplate`, `name`) VALUES
 CREATE TABLE `user` (
   `idUser` int(11) NOT NULL,
   `firstName` varchar(45) DEFAULT NULL,
-  `LastName` varchar(45) DEFAULT NULL,
+  `primaryLastName` varchar(45) DEFAULT NULL,
+  `secondLastName` varchar(45) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -192,8 +212,11 @@ CREATE TABLE `user` (
 -- Volcado de datos para la tabla `user`
 --
 
-INSERT INTO `user` (`idUser`, `firstName`, `LastName`, `email`) VALUES
-(1, 'Carlos Alexander', 'Chirito Rmero', 'chiritorom@gmail.com');
+INSERT INTO `user` (`idUser`, `firstName`, `primaryLastName`, `secondLastName`, `email`) VALUES
+(1, 'Carlos Alexander', 'Chirito', 'Romero', 'chiritorom@gmail.com'),
+(2, NULL, NULL, NULL, 'chiritorom1@gmail.com'),
+(3, NULL, NULL, NULL, 'chiritorom2@gmail.com'),
+(4, NULL, NULL, NULL, 'c2@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -224,15 +247,24 @@ INSERT INTO `useradmin` (`idUserAdmin`, `username`, `password`, `IdUser`) VALUES
 CREATE TABLE `userclient` (
   `idUserClient` int(11) NOT NULL,
   `password` varchar(45) DEFAULT NULL,
-  `idUser` int(11) DEFAULT NULL
+  `idUser` int(11) DEFAULT NULL,
+  `idGender` int(11) DEFAULT NULL,
+  `birthday` date DEFAULT NULL,
+  `mobile` varchar(45) DEFAULT NULL,
+  `weight` varchar(45) DEFAULT NULL,
+  `height` varchar(45) DEFAULT NULL,
+  `age` int(11) DEFAULT NULL,
+  `physicalActivity` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `userclient`
 --
 
-INSERT INTO `userclient` (`idUserClient`, `password`, `idUser`) VALUES
-(1, '123456', 1);
+INSERT INTO `userclient` (`idUserClient`, `password`, `idUser`, `idGender`, `birthday`, `mobile`, `weight`, `height`, `age`, `physicalActivity`) VALUES
+(1, '123456', 1, 1, '1994-08-07', '941477604', NULL, NULL, 22, NULL),
+(2, '123', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(3, NULL, 4, 2, NULL, NULL, NULL, NULL, NULL, NULL);
 
 --
 -- Índices para tablas volcadas
@@ -245,6 +277,12 @@ ALTER TABLE `data`
   ADD PRIMARY KEY (`idData`),
   ADD KEY `FK_Data_Page_idx` (`idPage`),
   ADD KEY `FK_Data_Template_idx` (`idTemplate`);
+
+--
+-- Indices de la tabla `gender`
+--
+ALTER TABLE `gender`
+  ADD PRIMARY KEY (`idGender`);
 
 --
 -- Indices de la tabla `page`
@@ -297,7 +335,8 @@ ALTER TABLE `useradmin`
 --
 ALTER TABLE `userclient`
   ADD PRIMARY KEY (`idUserClient`),
-  ADD KEY `FK_UserClient_User_idx` (`idUser`);
+  ADD KEY `FK_UserClient_User_idx` (`idUser`),
+  ADD KEY `FK_UserClient_Gender_idx` (`idGender`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -308,6 +347,11 @@ ALTER TABLE `userclient`
 --
 ALTER TABLE `data`
   MODIFY `idData` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT de la tabla `gender`
+--
+ALTER TABLE `gender`
+  MODIFY `idGender` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `page`
 --
@@ -332,7 +376,7 @@ ALTER TABLE `template`
 -- AUTO_INCREMENT de la tabla `user`
 --
 ALTER TABLE `user`
-  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `useradmin`
 --
@@ -342,7 +386,7 @@ ALTER TABLE `useradmin`
 -- AUTO_INCREMENT de la tabla `userclient`
 --
 ALTER TABLE `userclient`
-  MODIFY `idUserClient` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idUserClient` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- Restricciones para tablas volcadas
 --
@@ -377,6 +421,7 @@ ALTER TABLE `useradmin`
 -- Filtros para la tabla `userclient`
 --
 ALTER TABLE `userclient`
+  ADD CONSTRAINT `FK_UserClient_Gender` FOREIGN KEY (`idGender`) REFERENCES `gender` (`idGender`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `FK_UserClient_User` FOREIGN KEY (`idUser`) REFERENCES `user` (`idUser`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
