@@ -2,7 +2,7 @@
 	
 	<head>
 		<meta charset="utf-8">
-		<title>404 Not Found</title>
+		<title>Error 404 | Página no encontrada</title>
 
 		<link rel="shortcut icon" href="favicon.ico">
 		<link rel="stylesheet" type="text/css" href="<?= base_url() ?>/assets/css/style.css">

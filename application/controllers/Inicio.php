@@ -9,6 +9,7 @@ class Inicio extends CI_Controller {
         $this->load->model("UserClient");
         $this->load->model("Gender");
         $this->load->library('cart');
+        $this->load->model("foodmenu");
     }
 
 	public function page($url = "inicio") {
@@ -20,10 +21,13 @@ class Inicio extends CI_Controller {
 			$result3 = $this->data->findByPage($url);
 			$result4 = $this->plate->findAll();
 			$result5 = "";
+			$result6 = $this->Gender->findAll();
+			$result7 = $this->foodmenu->findAll();
+
 			if($this->session->has_userdata('user_logged_in') && $this->session->userdata('user_logged_in') == TRUE):
 				$result5 = $this->UserClient->findByEmail($this->session->userdata('user_email'));
 			endif;
-			$result6 = $this->Gender->findAll();
+			
 
 			$data = array(
 				"title" => $result1->name,
@@ -31,7 +35,8 @@ class Inicio extends CI_Controller {
 				"findByPage" => $result3,
 				"findAllPlate" => $result4,
 				"userData" => $result5,
-				"findAllGender" => $result6
+				"findAllGender" => $result6,
+				"findAllFoodMenu" => $result7
 			);
 			
 			$this->load->view('page_template_view', $data);

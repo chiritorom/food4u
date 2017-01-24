@@ -14,7 +14,6 @@ body {
 	width: 90%;
 	max-width: 1000px;
 	margin: auto;
-	overflow: hidden;
 }
 
 .stop-scrolling {
@@ -36,9 +35,10 @@ header {
 header .menu {
 	margin: 20px 0; 
 	text-align: right;
+	position: relative;
 }
 
-header .menu a {
+header .menu > a {
 	display: inline-block;
 	padding: 0 20px;
 	-webkit-text-transform: uppercase;
@@ -52,7 +52,7 @@ header .menu a {
 	color: #999999;
 }
 
-header .menu a:last-child {
+header .menu a#mis-platos {
 	border: 0;
 }
 
@@ -71,7 +71,6 @@ header .logo a img {
 }
 
 header .submenu {
-	float: left;
 	width: 100%;
 	text-align: center;
 	margin: 20px 0;
@@ -122,10 +121,10 @@ header .submenu a:hover {
 	position: relative;
 	background-color: rgba(255, 255, 255, 0.7);
 	text-align: center;
+	padding: 100px 0;
 }
 
 #ncode .banner .banner-content .banner-text {
-	margin: 100px 0;
 }
 
 #ncode .banner .banner-content .banner-text h2 {
@@ -231,16 +230,16 @@ header .submenu a:hover {
 
 #ncode .slider .slides img {
 	width: 100%;
-	height: 200px;
-	margin-bottom: 5px;
 }
 
 #ncode .slider .slides .this-week {
-	margin: 10px;
+	margin-right: 17px;
 	text-align: left;
-	box-shadow: 0 0 10px 0 #ccc;
-	padding: 10px;
 	background: #fff;
+}
+
+#ncode .slider .slides .this-week .thumb {
+	padding: 10px;
 }
 
 #ncode .slider .slides .this-week h3,
@@ -251,13 +250,15 @@ header .submenu a:hover {
 #ncode .slider .slides .this-week h3 {
 	font-weight: 600;
 	margin-bottom: 5px;
-	font-size: 15px;
+	font-size: 16px;
 	line-height: 30px;
+	color: #666;
 }
 
 #ncode .slider .slides .this-week p {
-	font-weight: 300;
-	font-size: 15px;
+	font-weight: 400;
+    font-size: 18px;
+	color: #F37C20;
 }
 
 #ncode .slider .slides .slick-prev:before,
@@ -758,6 +759,43 @@ footer .copyright h3 {
 
 #login .form-login .close a {
 	color: #000;
+}
+
+#platos {
+	position: absolute;
+	background: #fff;
+	z-index: 9998;
+	top: 30px;
+	right: 20px;
+	border: 1px solid #444;
+	max-height: 300px;
+	overflow-y: scroll;
+	display: none;
+}
+
+#platos table {
+	overflow-y: scroll;
+	max-height: 200px;
+}
+
+#platos tr td {
+	padding: 5px;
+	vertical-align: middle;
+	font-weight: 300;
+	text-align: left;
+}
+
+#platos tr td:nth-child(3) {
+	padding-right: 50px;
+}
+
+#platos img {
+	width: 80px;
+	max-height: 80px;
+}
+
+#calculator {
+	display: flex;
 }
 
 @media screen and (max-width: 800px) {

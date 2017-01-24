@@ -13,6 +13,33 @@
 	<?php $this->load->view('inc/header'); ?>
 
 	<div id="ncode">
+		<div id="calculator">
+			<div class="container">
+				<div class="menu">
+					<select id="select-menu">
+						<option>Selecciona un plato principal</option>
+						<?php  
+						foreach ($findAllFoodMenu->result() as $food_menu) {
+							echo '<option value="' . $food_menu->idFoodMenu . '">' . $food_menu->description . '</option>';
+						}
+						?>
+					</select><br>
+					<select id="select-item">
+						<option>Selecciona item</option>
+					</select>
+					<div id="title-content"></div>
+				</div>
+
+				<div id="personalize">
+					<input type="number">
+					<label for="">Romain</label>
+					<button>X</button>
+					<br>
+				</div>
+				<div class="result">asd2</div>
+			</div>
+		</div>
+
 	<?php
 		foreach ($findByPage->result() as $data):
 
@@ -84,32 +111,42 @@
 			                <div class="slides">
 			                    <div class="this-week">
 			                        <img src="' . base_url() . 'assets/images/this-week01.jpg" alt="">
-			                        <h3>Nombre plato 3</h3>
-			                        <p>S/. 9.00</p>
+			                        <div class="thumb">
+			                        	<h3>Nombre plato 3</h3>
+			                        	<p>S/. 9.00</p>
+			                        </div>
 			                    </div>
 
 			                    <div class="this-week">
 			                        <img src="' . base_url() . 'assets/images/this-week02.jpg" alt="">
-			                        <h3>Nombre plato 3</h3>
-			                        <p>S/.11.00</p>
+			                        <div class="thumb">
+				                        <h3>Nombre plato 3</h3>
+				                        <p>S/.11.00</p>
+				                    </div>
 			                    </div>
 
 			                    <div class="this-week">
 			                        <img src="' . base_url() . 'assets/images/this-week01.jpg" alt="">
-			                        <h3>Nombre plato 3</h3>
-			                        <p>S/. 10.00</p>
+			                        <div class="thumb">
+				                        <h3>Nombre plato 3</h3>
+				                        <p>S/. 10.00</p>
+			                        </div>
 			                    </div>
 
 			                    <div class="this-week">
 			                        <img src="' . base_url() . 'assets/images/this-week01.jpg" alt="">
-			                        <h3>Nombre plato 4</h3>
-			                        <p>S/. 9.00</p>
+			                        <div class="thumb">
+				                        <h3>Nombre plato 4</h3>
+				                        <p>S/. 9.00</p>
+			                        </div>
 			                    </div>
 
 			                    <div class="this-week">
 			                        <img src="' . base_url() . 'assets/images/this-week01.jpg" alt="">
-			                        <h3>Nombre plato 5</h3>
-			                        <p>S/. 9.00</p>
+			                        <div class="thumb">
+				                        <h3>Nombre plato 5</h3>
+				                        <p>S/. 9.00</p>
+			                        </div>
 			                    </div>
 			                </div> 
 			            </div>
@@ -169,7 +206,7 @@
 				                <div class="plato-img">
 				                    <div class="plato-accion" style="background: url(' . base_url() . 'assets/images/' . $plate->image . ') center; background-size: cover;"></div>
 				                    <div class="plato-btn">
-				                        <a href="#">Añadir</a>
+				                        <a href="#" data-action="' . base_url() . 'processUser/agregar_carrito" data-plate="' . $plate->idPlate . ',' . $plate->name . ',' . $plate->price . ',1,' . $plate->image . '">Añadir</a>
 				                        <a href="' . base_url() . $data->url . '/' . $plate->url . '">Ver</a>
 				                    </div>
 				                </div>
@@ -422,6 +459,12 @@
 			    	else:
 			    		header("Location: " . base_url());
 		    		endif;
+			    	break;
+			    case 10: 
+			    echo "mi carrito";
+			    	break;
+			    case 11: 
+			    echo "mi calculador";
 			    	break;
         	endswitch;
         endforeach;

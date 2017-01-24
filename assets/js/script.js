@@ -103,4 +103,75 @@ $(document).ready(function(){
 		}
 	});
   });
+
+  $(".plato-btn a:first-child").on("click", function(e) {
+  	e.preventDefault();
+
+  	var $me = $(this);
+
+  	var data_plate = $me.attr("data-plate").split(",");
+
+  	$.ajax({
+		url: $me.attr("data-action"),
+		method: "post",
+		data: {
+			id: data_plate[0],
+			nombre: data_plate[1],
+			precio: data_plate[2],
+			cantidad: data_plate[3],
+			imagen: data_plate[4]
+		},
+		success: function(resp) {
+			
+			$("#platos").load("#platos .platos-load");
+			$("#mis-platos > span").load("#mis-platos span.count");
+		}
+	});
+  });
+
+  $("#mis-platos").on("click", function(e) {
+  	e.preventDefault();
+	$("#platos").fadeToggle("slow");
+  });
+
+  $("#select-menu").on("change", function() {
+  	var id = $(this).val();
+
+  	$.ajax({
+		url: "processCalculator/food_item",
+		method: "post",
+		data: {
+			id: id
+		},
+		success: function(resp) {
+			$("#select-item").html(resp);
+		}
+	});
+  });
+
+  $("#select-item").on("change", function() {
+  	var $me = $(this);
+  	var id = $me.val();
+  	var id_menu = $('#select-item option:selected').attr("data-menu");
+  	var per = "";
+
+  	$.ajax({
+  		url: "processCalculator/food_title",
+  		method: "post",
+  		data: {
+  			id: id,
+  			id_menu: id_menu
+  		},
+  		success: function(resp) {
+  			$("#title-content").html(resp);
+
+  			for (var i = 0; i<5; i++) {
+  				per += i; 
+  			}
+  			$("#personalize").html(per);
+  		}
+  	});
+  });
+
+
 });

@@ -7,7 +7,7 @@ class ProcessUser extends CI_Controller {
         parent::__construct();
         $this->load->model("User");
         $this->load->model("UserClient");
-        $this->load->library('session');
+        $this->load->library('cart');
     }
 
     public function usuario() {
@@ -43,6 +43,25 @@ class ProcessUser extends CI_Controller {
 	public function actualizar_usuario() {
 		echo "actualizado";
 		
+	}
+
+	public function agregar_carrito() {
+		$id = $this->input->post("id");
+		$cantidad = $this->input->post("cantidad");
+		$nombre = $this->input->post("nombre");
+		$precio = $this->input->post("precio");
+		$imagen = $this->input->post("imagen");
+
+		$data = array(
+            'id'      => $id,
+            'qty'     => $cantidad,
+            'price'   => $precio,
+            'name'    => $nombre,
+            'options' => array('image' => $imagen)
+		);
+
+		$this->cart->insert($data);
+
 	}
 
 	public function logout() {

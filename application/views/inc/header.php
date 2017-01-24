@@ -8,7 +8,29 @@
              echo '<a href="' . base_url() . 'perfil">Mi perfíl</a>
                    <a href="' . base_url() . 'logout">Cerrar sesión</a>';
             endif;
-            echo '<a href="#">Mis platos (0)</a>'; ?>
+            echo '<a href="" id="mis-platos">Mis platos (<span class="count">' . $this->cart->total_items() . '</span>)</a>'; ?>
+            <div id="platos">
+                <div class="platos-load">
+                <a href="<?= base_url() ?>calculador-de-nutricion">Añadir plato personalizado</a>
+                <table>
+                    <tbody>
+                    <?php 
+                    foreach ($this->cart->contents() as $items): 
+                        echo '
+                        <tr>
+                            <td><img src="' . base_url() . 'assets/images/' . $items["options"]["image"] . '" /></td>
+                            <td>' . $items["qty"] . ' uds.</td>
+                            <td>' . $items["name"] . '</td>
+                            <td>S/. ' . $this->cart->format_number($items['price'])  . '</td>
+                            <td><a href="#">X</a></td>
+                        </tr>';
+                    endforeach;    
+                    ?>
+                    </tbody>
+                </table>
+                <p>Total: <?= $this->cart->format_number($this->cart->total()) ?></p>
+                </div>
+            </div>
         </nav>
 
         <div class="logo">
@@ -24,6 +46,8 @@
         </nav>
     </div>
 </header>
+
+
 
 <?php if(!isset($_SESSION["UserClient"]) || $_SESSION["UserClient"] == FALSE): 
 echo '
