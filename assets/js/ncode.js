@@ -11,8 +11,8 @@ function readURLVHC(input, img) {
 }
 
 $('aside ul li a').filter(function() {
-    return this.href.split('/')[4] == location.href.split('/')[4];
-}).addClass('active');
+	return this.href == location.href;
+}).addClass("active");
 
 $(".table-plate .group-action a:last-child").on("click", function(e) {
 	e.preventDefault();

@@ -13,33 +13,6 @@
 	<?php $this->load->view('inc/header'); ?>
 
 	<div id="ncode">
-		<div id="calculator">
-			<div class="container">
-				<div class="menu">
-					<select id="select-menu">
-						<option>Selecciona un plato principal</option>
-						<?php  
-						foreach ($findAllFoodMenu->result() as $food_menu) {
-							echo '<option value="' . $food_menu->idFoodMenu . '">' . $food_menu->description . '</option>';
-						}
-						?>
-					</select><br>
-					<select id="select-item">
-						<option>Selecciona item</option>
-					</select>
-					<div id="title-content"></div>
-				</div>
-
-				<div id="personalize">
-					<input type="number">
-					<label for="">Romain</label>
-					<button>X</button>
-					<br>
-				</div>
-				<div class="result">asd2</div>
-			</div>
-		</div>
-
 	<?php
 		foreach ($findByPage->result() as $data):
 
@@ -464,7 +437,29 @@
 			    echo "mi carrito";
 			    	break;
 			    case 11: 
-			    echo "mi calculador";
+			    echo '<div id="calculator">
+						<div class="container">
+							<div class="menu">
+								<select id="select-menu">
+									<option>Selecciona un plato principal</option>';
+									
+									foreach ($findAllFoodMenu->result() as $food_menu) {
+										echo '<option value="' . $food_menu->idFoodMenu . '">' . $food_menu->description . '</option>';
+									}
+								echo '	
+								</select><br>
+								<select id="select-item">
+									<option>Selecciona item</option>
+								</select>
+								<div id="title-content"></div>
+							</div>
+
+							<div id="personalize">
+							</div>
+
+							<div class="result"></div>
+						</div>
+					</div>';
 			    	break;
         	endswitch;
         endforeach;

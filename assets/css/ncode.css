@@ -72,14 +72,22 @@ textarea {
 	padding: 5px 10px;
 	font-family: "Open Sans", Sans-serif;
 	font-size: 13px;
-	border-radius: 5px;
 	outline: 0;
-	line-height: 13px;
+	line-height: 18px;
 }
 
 #nc-login form .nc-login-form input[type="text"]:focus,
 #nc-login form .nc-login-form input[type="password"]:focus {
 	border: 0;
+}
+
+#nc-login form .nc-login-form input[type="submit"] {
+	background: #F37C20;
+	color: #fff;
+	font-size: 15px;
+	line-height: 18px;
+	padding: 5px 0;
+	cursor: pointer;
 }
 
 header {

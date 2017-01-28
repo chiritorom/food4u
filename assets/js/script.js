@@ -165,10 +165,37 @@ $(document).ready(function(){
   		success: function(resp) {
   			$("#title-content").html(resp);
 
-  			for (var i = 0; i<5; i++) {
-  				per += i; 
+  			var option = $("input:checked").map(function () {return this.value;}).get().join(",");
+  			var array_option = option.split(",");
+  			var array_option_length = $("input[type='checkbox']").length;
+
+  			for (var i = 0 ;i<array_option_length; i++) {
+  				for(var j = 0; j<array_option_length; j++) {
+	  				if((i+1) == array_option[j]) {
+	  					var name = $("input[name='option" + (i+1) + "'] + span").html();
+	  					per += '<div class="content-option""><input type="number" value="1" min="1"><label for="">' + name + '</label><button class="delete-option" data-id="' + (i+1) + '">X</button></div><br>';
+	  				}
+	  			}
   			}
+
   			$("#personalize").html(per);
+
+  			$(".delete-option").on("click", function() {
+  				var data_id = $(this).attr("data-id");
+  				$("input[name='option" + data_id + "']").attr("checked", false);
+  				$(this).parent().remove();
+  			});
+
+  			$("#title-content input[type='checkbox']").mousedown(function() {
+  				var id = $(this).val();
+  				alert($(".content-option button[data-id='" + id + "']").attr("data-id"));
+
+  				if($(".content-option button[data-id='" + id + "']").attr("data-id") == id) {
+  					$(this).parent().remove();
+  				} else {
+  					$(".content-option:last-child").append("mi ultimo div");
+  				}
+  			});
   		}
   	});
   });

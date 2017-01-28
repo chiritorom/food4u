@@ -65,7 +65,6 @@ class ProcessUser extends CI_Controller {
 	}
 
 	public function logout() {
-		session_start();
 		if($this->session->userdata('user_logged_in') == TRUE) 
 			$this->session->set_userdata('user_logged_in', FALSE);
 

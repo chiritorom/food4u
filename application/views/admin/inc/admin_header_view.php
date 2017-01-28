@@ -37,4 +37,10 @@
 		</ul>
 
 		<h2>Páginas</h2>
+
+		<ul>
+			<?php foreach ($this->Page->findAll()->result() as $page) {
+			echo '<li><a href="' . base_url() . 'admin/paginas/' . $page->url . '"><i class="fa fa-book" aria-hidden="true"></i> ' . $page->name . '</a></li>';
+			} ?>
+		</ul>
 	</aside>

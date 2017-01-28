@@ -28,7 +28,7 @@ class ProcessCalculator extends CI_Controller {
 		$result1 = $this->foodmenufoodtitle->findByFoodMenu($id);
 		$result2 = $this->foodoption->findAll();
 		$result3 = $this->fooditemfoodoption->findByFoodItem();
-		
+
 		//ALGORITMO DEL CALCULADOR DE NUTRICIÓN
 		foreach ($result1->result_array() as $food_title):
 			echo '<label>' . $food_title["description"] . '</label><br>';
@@ -43,7 +43,7 @@ class ProcessCalculator extends CI_Controller {
 						endif;
 					endforeach;
 
-					echo '<input type="checkbox" value=" ' . $food_option["idFoodOption"] . ' "' . $check . '> <span>' . $food_option["description"] . '</span><br>';
+					echo '<input type="checkbox" name="option' . $food_option["idFoodOption"] . '" value=" ' . $food_option["idFoodOption"] . ' "' . $check . '> <span>' . $food_option["description"] . '</span><br>';
 				endif;
 			endforeach;
 			echo '<br>';
