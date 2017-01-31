@@ -8,12 +8,3 @@
 	</div>
 
 	<?php $this->load->view('admin/inc/admin_footer_view') ?>
-
-
-
-
-
-
-
-
-

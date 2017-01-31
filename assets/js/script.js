@@ -1,5 +1,7 @@
 $(document).ready(function(){
 	$( "#tabs" ).tabs();
+	$( "#tabs-plate" ).tabs();
+
   $('.slides').slick({
     infinite: true,
   	slidesToShow: 3,
@@ -125,9 +127,28 @@ $(document).ready(function(){
 			
 			$("#platos").load("#platos .platos-load");
 			$("#mis-platos > span").load("#mis-platos span.count");
+
 		}
 	});
   });
+
+  	$("body").on("click", "#platos table a.delete-item", function(e) {
+  		e.preventDefault();
+
+  		var id = $(this).attr("data-id");
+		
+		$.ajax({
+			url: "processUser/eliminar_item",
+			method: "post",
+			data: {
+				id: id
+			},
+			success: function() {
+				$("#platos").load("#platos .platos-load");
+				$("#mis-platos > span").load("#mis-platos span.count");
+			}
+		});
+	});
 
   $("#mis-platos").on("click", function(e) {
   	e.preventDefault();

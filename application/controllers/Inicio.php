@@ -44,5 +44,28 @@ class Inicio extends CI_Controller {
 			$this->load->view('404');
 		endif;
 	}
+
+	public function nuestros_platos($plate = "") {
+		$this->load->helper('form');
+		$this->load->model('plate');
+
+		if($this->plate->findByUrl($plate)):
+
+			$result1 = $this->plate->findAll();
+			$result2 = $this->page->findAll();
+			$result3 = $this->plate->findByUrl($plate);
+
+			$data = array(
+				'findAllPlate' => $result1,
+				'findAll' => $result2,
+				'title' => 'Nuestros platos',
+				'dataPlate' => $result3
+			);
+
+			$this->load->view('plate_view', $data);
+		else:
+			$this->load->view('404');
+		endif;
+	}
 	
 }

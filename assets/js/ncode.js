@@ -10,6 +10,7 @@ function readURLVHC(input, img) {
     }
 }
 
+
 $('aside ul li a').filter(function() {
 	return this.href == location.href;
 }).addClass("active");
@@ -56,6 +57,11 @@ $(".table-plate .group-action a:first-child").on("click", function(e) {
 			$('.img-plate input').change(function() {
 		      readURLVHC(this, $(".img-plate img")); 
 		     });
+
+			$('.form-plate .content-form textarea').froalaEditor({
+			  toolbarButtons: ['bold', 'italic', 'underline', 'formatUL', '|', 'align']
+			});
+
 		}
 	});
 });

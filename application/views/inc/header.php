@@ -22,13 +22,13 @@
                             <td>' . $items["qty"] . ' uds.</td>
                             <td>' . $items["name"] . '</td>
                             <td>S/. ' . $this->cart->format_number($items['price'])  . '</td>
-                            <td><a href="#">X</a></td>
+                            <td><a href="" class="delete-item" data-id="' . $items["rowid"] . '"><i class="fa fa-times"></i></a></td>
                         </tr>';
                     endforeach;    
                     ?>
                     </tbody>
                 </table>
-                <p>Total: <?= $this->cart->format_number($this->cart->total()) ?></p>
+                <p>Total: S/. <?= $this->cart->format_number($this->cart->total()) ?></p>
                 </div>
             </div>
         </nav>

@@ -64,6 +64,21 @@ class ProcessUser extends CI_Controller {
 
 	}
 
+	public function eliminar_item() {
+		$id = $this->input->post("id");
+
+		$data = array(
+	        'rowid' => $id,
+	        'qty'   => 0
+		);
+
+		$this->cart->update($data);
+	}
+
+	public function actualizar_item() {
+		
+	}
+
 	public function logout() {
 		if($this->session->userdata('user_logged_in') == TRUE) 
 			$this->session->set_userdata('user_logged_in', FALSE);

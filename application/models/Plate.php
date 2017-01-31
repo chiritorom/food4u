@@ -13,6 +13,11 @@ class Plate extends CI_Model {
 		return $result->row();
 	}
 
+	public function findByUrl($url) {
+		$result = $this->db->get_where('plate', array('url' => $url), 1);
+		return $result->row();
+	}
+
 	public function addPlate($nombre, $precio, $descripcion, $imagen) {
 		$data = array(
 		        'name' => $nombre,
