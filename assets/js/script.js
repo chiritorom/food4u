@@ -221,5 +221,21 @@ $(document).ready(function(){
   	});
   });
 
+	$("body").on("submit", "form#countPlate", function(e) {
+		e.preventDefault();
 
+		var $me = $(this);
+
+		$.ajax({
+	  		url: $me.attr("action"),
+	  		method: $me.attr("method"),
+	  		data: $me.serialize(),
+	  		success: function(resp) {
+	  			alert(resp);
+	  			$("#platos").load("#platos .platos-load");
+				$("#mis-platos > span").load("#mis-platos span.count");
+	  		}
+	  	});
+
+	})
 });

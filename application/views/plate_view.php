@@ -28,6 +28,9 @@
 						form_open(base_url() . 'processUser/actualizar_item', array('id' => 'countPlate')) .
 						form_input(array('name' => 'count', 'value' => 1, 'type' => 'number', 'min' => 1)) .
 						form_hidden('id', $dataPlate->idPlate) .
+						form_hidden('imagen', $dataPlate->image) .
+						form_hidden('nombre', $dataPlate->name) .
+						form_hidden('precio', $dataPlate->price) .
 						form_submit('', 'Añadir') .
 						form_close();
 					?>

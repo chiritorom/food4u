@@ -69,14 +69,33 @@ class ProcessUser extends CI_Controller {
 
 		$data = array(
 	        'rowid' => $id,
-	        'qty'   => 0
+	        'qty'   => 0,
 		);
 
 		$this->cart->update($data);
 	}
 
 	public function actualizar_item() {
-		
+		$id = $this->input->post("id");
+		$cantidad = $this->input->post("count");
+		$nombre = $this->input->post("nombre");
+		$precio = $this->input->post("precio");
+		$imagen = $this->input->post("imagen");
+
+		if($cantidad >= 1):
+			$data = array(
+		        'id' => $id,
+		        'qty'   => $cantidad,
+		        'price'   => $precio,
+	            'name'    => $nombre,
+	            'options' => array('image' => $imagen)
+			);
+
+			$this->cart->insert($data);
+			echo "Agregado al carrito";
+		else:
+			echo "Ingrese una cantidad válida";
+		endif;
 	}
 
 	public function logout() {

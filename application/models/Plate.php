@@ -26,6 +26,7 @@ class Plate extends CI_Model {
 		    'id' => 'idPlate',
 		    'replacement' => '-' 
 		);
+
 		$this->load->library('slug', $config);
 
 		$data = array(
@@ -49,11 +50,23 @@ class Plate extends CI_Model {
 		$this->db->update('plate', $data);
 	}
 
-	public function updatePlate($id, $nombre, $precio, $descripcion, $imagen) {
+	public function updatePlate($id, $nombre, $precio, $descripcion, $imagen, $url) {
+
+		$config = array(
+		    'table' => 'plate',
+		    'field' => 'url',
+		    'title' => 'title',
+		    'id' => 'idPlate',
+		    'replacement' => '-' 
+		);
+
+		$this->load->library('slug', $config);
+
 		$data = array(
-		        'name' => $nombre,
-		        'price' => $precio,
-		        'description' => $descripcion
+	        'name' => $nombre,
+	        'price' => $precio,
+	        'description' => $descripcion,
+	        'url' => $this->slug->create_uri(array('title' => $url), $id)
 		);
 
 		if($imagen != "") {

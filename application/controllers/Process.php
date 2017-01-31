@@ -40,7 +40,7 @@ class Process extends CI_Controller {
                 <label for="">NOMBRE</label>
                 <input type="text" name="nombre" value="' . $result->name . '">
                 <label for="">URL</label>
-                <input type="text" value="' . $result->url . '" disabled>
+                <input type="text" name="url" value="' . $result->url . '">
                 <label for="">FECHA DE CREACIÓN</label>
                 <input type="text" value="' . $result->date . '" disabled>
                 <label for="">DESCRIPCIÓN</label>
@@ -122,6 +122,7 @@ class Process extends CI_Controller {
     $nombre = $this->input->post("nombre");
     $precio = $this->input->post("precio");
     $descripcion = $this->input->post("descripcion");
+    $url = $this->input->post("url");
     $imagen = "";
 
     $config['upload_path'] = './assets/images';
@@ -140,7 +141,8 @@ class Process extends CI_Controller {
       $imagen = $this->upload->data("file_name");
       
     }
-    $this->Plate->updatePlate($id, $nombre, $precio, $descripcion, $imagen);
+
+    $this->Plate->updatePlate($id, $nombre, $precio, $descripcion, $imagen, $url);
 
     header("Location: " . base_url() . "admin/platos");
     
