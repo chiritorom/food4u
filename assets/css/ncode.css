@@ -16,10 +16,6 @@ a {
 	text-decoration: none;
 }
 
-ul, li {
-	list-style: none;
-	
-}
 
 .nc-100 {
 	width: 100%;
@@ -399,6 +395,10 @@ aside ul li a.active {
 #modal-plate .form-plate .content-form textarea {
 	resize: none;
 	height: 100px;
+}
+
+#modal-plate .form-plate .content-form ul {
+	padding-left: 20px;
 }
 
 #modal-plate .form-plate .button-close {

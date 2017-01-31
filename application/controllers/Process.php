@@ -91,6 +91,7 @@ class Process extends CI_Controller {
 	}
 
   public function agregar_nuevo_plato() {
+    
     $nombre = $this->input->post("nombre");
     $precio = $this->input->post("precio");
     $descripcion = $this->input->post("descripcion");
