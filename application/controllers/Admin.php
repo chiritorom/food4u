@@ -6,6 +6,7 @@ class Admin extends CI_Controller {
 	public function __construct() {
         parent::__construct();
         $this->load->model("UserAdmin");
+        $this->load->model("UserClient");
         $this->load->model("Plate");
         $this->load->model("Page");
         $this->load->library("session");
@@ -24,7 +25,10 @@ class Admin extends CI_Controller {
 		$password = $this->input->post("password");
 
 		if($this->UserAdmin->findByUserNameAndPassword($username, $password)):
+			$result = $this->UserAdmin->findByUserNameAndPassword($username, $password);
+
 			$data = array(
+				'user_admin_name' => $result->username,
 				'user_admin_logged_in' => TRUE 
 				);
 
@@ -88,6 +92,40 @@ class Admin extends CI_Controller {
 				);
 
 			$this->load->view('admin/pages_view', $data);
+
+		} else {
+			$this->load->view("404");
+		}
+	}
+
+	public function administrador() {
+		if($this->session->userdata('user_admin_logged_in') == TRUE) {
+
+			$result = $this->UserAdmin->findAll();
+
+			$data = array(
+				"page" => "Administrador",
+				'findAllUserAdmin' => $result
+				);
+
+			$this->load->view('admin/user_admin_view', $data);
+
+		} else {
+			$this->load->view("404");
+		}
+	}
+
+	public function clientes() {
+		if($this->session->userdata('user_admin_logged_in') == TRUE) {
+
+			$result = $this->UserClient->findAll();
+
+			$data = array(
+				"page" => "Clientes",
+				'findAllUserClient' => $result
+				);
+
+			$this->load->view('admin/user_client_view', $data);
 
 		} else {
 			$this->load->view("404");

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-01-2017 a las 18:22:08
+-- Tiempo de generación: 01-02-2017 a las 21:28:24
 -- Versión del servidor: 10.1.19-MariaDB
 -- Versión de PHP: 5.6.28
 
@@ -47,7 +47,149 @@ INSERT INTO `data` (`idData`, `idPage`, `position`, `data`, `idTemplate`) VALUES
 (6, 2, 1, 'No hay datos', 6),
 (8, 3, 1, 'No hay datos', 7),
 (9, 4, 1, 'No hay datos', 8),
-(10, 9, 1, NULL, 9);
+(10, 9, 1, NULL, 9),
+(11, 10, 1, NULL, 10),
+(12, 11, 1, NULL, 11);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `fooditem`
+--
+
+CREATE TABLE `fooditem` (
+  `idFoodItem` int(11) NOT NULL,
+  `description` varchar(45) DEFAULT NULL,
+  `idFoodMenu` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `fooditem`
+--
+
+INSERT INTO `fooditem` (`idFoodItem`, `description`, `idFoodMenu`) VALUES
+(1, '*NEW Autumn Caesar Salad', 1),
+(2, 'asd', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `fooditemfoodoption`
+--
+
+CREATE TABLE `fooditemfoodoption` (
+  `idFoodItem` int(11) DEFAULT NULL,
+  `idFoodOption` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `fooditemfoodoption`
+--
+
+INSERT INTO `fooditemfoodoption` (`idFoodItem`, `idFoodOption`) VALUES
+(1, 7),
+(1, 10),
+(1, 6);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `foodmenu`
+--
+
+CREATE TABLE `foodmenu` (
+  `idFoodMenu` int(11) NOT NULL,
+  `description` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `foodmenu`
+--
+
+INSERT INTO `foodmenu` (`idFoodMenu`, `description`) VALUES
+(1, 'Salads'),
+(2, 'Wraps'),
+(3, 'Soups'),
+(4, 'Smoothies');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `foodmenufoodtitle`
+--
+
+CREATE TABLE `foodmenufoodtitle` (
+  `idFoodMenu` int(11) DEFAULT NULL,
+  `idFoodTitle` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `foodmenufoodtitle`
+--
+
+INSERT INTO `foodmenufoodtitle` (`idFoodMenu`, `idFoodTitle`) VALUES
+(1, 1),
+(1, 2),
+(1, 3),
+(1, 4),
+(1, 5),
+(1, 6),
+(1, 7);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `foodoption`
+--
+
+CREATE TABLE `foodoption` (
+  `idFoodOption` int(11) NOT NULL,
+  `description` varchar(45) DEFAULT NULL,
+  `idFoodTitle` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `foodoption`
+--
+
+INSERT INTO `foodoption` (`idFoodOption`, `description`, `idFoodTitle`) VALUES
+(1, 'Arugula', 1),
+(2, 'Baby Spinach', 1),
+(3, 'Kale', 1),
+(4, 'Organic', 1),
+(5, 'Mesclun', 1),
+(6, 'Red Cabbage', 1),
+(7, 'Romain', 1),
+(8, 'Apples', 2),
+(9, 'Banana Peppers', 2),
+(10, 'Bartlet Pears', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `foodtitle`
+--
+
+CREATE TABLE `foodtitle` (
+  `idFoodTitle` int(11) NOT NULL,
+  `description` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `foodtitle`
+--
+
+INSERT INTO `foodtitle` (`idFoodTitle`, `description`) VALUES
+(1, 'Greens/Grains'),
+(2, 'Essentials'),
+(3, 'Premium'),
+(4, 'Proteins'),
+(5, 'Cheese'),
+(6, 'Dressing'),
+(7, 'Bread'),
+(8, 'Wraps'),
+(9, 'Soup'),
+(10, 'Protein Options');
 
 -- --------------------------------------------------------
 
@@ -94,9 +236,11 @@ INSERT INTO `page` (`idPage`, `name`, `url`, `position`, `idPageType`, `state`) 
 (4, 'Nosotros', 'nosotros', 4, 2, 1),
 (5, 'Blog', 'blog', 5, 2, 1),
 (6, 'Contacto', 'contacto', 6, 2, 1),
-(7, 'Inicia sesión', '#', 1, 1, 1),
-(8, 'Mis platos', '#', 2, 1, 1),
-(9, 'Perfil', 'perfil', 3, 1, 0);
+(7, 'Inicia sesión', '#', 1, 1, 0),
+(8, 'Mis platos', '#', 2, 1, 0),
+(9, 'Perfil', 'perfil', 3, 1, 0),
+(10, 'Carrito', 'carrito', 4, 1, 0),
+(11, 'Calculador de nutrición', 'calculador-de-nutricion', 5, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -131,28 +275,19 @@ CREATE TABLE `plate` (
   `url` varchar(45) DEFAULT NULL,
   `description` text,
   `date` datetime DEFAULT NULL,
-  `state` int(11) DEFAULT '1'
+  `state` int(11) DEFAULT '1',
+  `ingredients` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `plate`
 --
 
-INSERT INTO `plate` (`idPlate`, `name`, `price`, `image`, `url`, `description`, `date`, `state`) VALUES
-(1, 'Plato 01', '9.00', 'this-week01.jpg', 'plato-01', 'Descipcion del plato', '2016-12-25 03:42:53', 1),
-(2, 'Plato 02', '16.00', 'this-week01.jpg', 'plato-02', 'Descripciiooooooon', '2017-01-08 01:30:00', 1),
-(4, 'Plato03', '20.00', 'thumb.jpg', NULL, 'asddd', NULL, 0),
-(5, 'sdf', '0.00', 'thumb1.jpg', NULL, 'sdf', '2017-01-13 01:22:25', 0),
-(6, 'asd', '0.00', 'thumb2.jpg', NULL, 'we', '2017-01-12 19:27:00', 0),
-(7, 'asd', '34.00', 'Plato-comida.jpg', NULL, 'asd', '2017-01-12 23:39:21', 0),
-(8, 'fsdf', '56.00', 'fondo.jpg', NULL, '34', '2017-01-12 23:39:53', 0),
-(9, 'asd', '0.00', 'thumb3.jpg', NULL, '34', '2017-01-12 23:41:14', 0),
-(10, 'asd', '34.00', 'thumb4.jpg', NULL, 'asd', '2017-01-12 23:42:30', 0),
-(11, 'asd', '45.00', 'thumb5.jpg', NULL, 'asdd', '2017-01-12 23:46:17', 0),
-(12, 'hhh', '45.00', 'thumb6.jpg', NULL, 'asdsd', '2017-01-12 23:46:34', 0),
-(13, 'Prueba', '45.60', 'thumb7.jpg', NULL, 'asdd', '2017-01-12 23:50:53', 0),
-(14, 'Plato034', '45.00', 'Plato-comida5.jpg', NULL, 'deeees', '2017-01-13 14:40:15', 1),
-(15, 'Plato55', '45.00', 'Plato-comida4.jpg', NULL, 'Pruebaa23\r\n', '2017-01-13 15:08:04', 1);
+INSERT INTO `plate` (`idPlate`, `name`, `price`, `image`, `url`, `description`, `date`, `state`, `ingredients`) VALUES
+(1, 'Plato 01', '9.00', 'plato-01.png', 'plato-01', '<p style=""><strong>Sofre&iacute;mos ajo, cebolla y</strong></p><p style="">Sofre&iacute;mos ajo, cebolla y pimiento</p>', '2016-12-25 03:42:53', 1, '<p>Ingredienteeees</p>'),
+(2, 'Plato 02', '16.00', 'plato-02.png', 'plato-02', '<p style="">Lorem ipsum dolor sit ollit anim id est laborum.</p>', '2017-01-08 01:30:00', 1, ''),
+(26, ' Champiñones fríos congelados', '12.00', 'champinones-frios-congelados.png', 'champinones-frios-congelados', '<p style="">Descripci&oacute;n del plato</p>', '2017-01-31 13:30:17', 1, '<p style="">Algunos ingredientes</p>'),
+(27, 'Plato de prueba', '15.50', 'plato-de-prueba.png', 'plato-de-prueba', '<p style="">La descripci&oacute;n del plato</p>', '2017-02-01 11:19:49', 1, '<p style="">Prueba ingrediente</p>');
 
 -- --------------------------------------------------------
 
@@ -192,7 +327,9 @@ INSERT INTO `template` (`idTemplate`, `name`) VALUES
 (6, 'img-btn-ttl-prgph'),
 (7, 'icn-ttl-prgph-img'),
 (8, 'ttl-prgph-img'),
-(9, 'perfil');
+(9, 'perfil'),
+(10, 'carrito'),
+(11, 'calculador-de-nutricion');
 
 -- --------------------------------------------------------
 
@@ -279,6 +416,46 @@ ALTER TABLE `data`
   ADD KEY `FK_Data_Template_idx` (`idTemplate`);
 
 --
+-- Indices de la tabla `fooditem`
+--
+ALTER TABLE `fooditem`
+  ADD PRIMARY KEY (`idFoodItem`),
+  ADD KEY `FK_Item_Menu_idx` (`idFoodMenu`);
+
+--
+-- Indices de la tabla `fooditemfoodoption`
+--
+ALTER TABLE `fooditemfoodoption`
+  ADD KEY `FK_FoodItemFoodOption_FoodItem_idx` (`idFoodItem`),
+  ADD KEY `FK_FoodItemFoodOption_FoodOption_idx` (`idFoodOption`);
+
+--
+-- Indices de la tabla `foodmenu`
+--
+ALTER TABLE `foodmenu`
+  ADD PRIMARY KEY (`idFoodMenu`);
+
+--
+-- Indices de la tabla `foodmenufoodtitle`
+--
+ALTER TABLE `foodmenufoodtitle`
+  ADD KEY `FK_FoodMenuFoodTitle_FoodMenu_idx` (`idFoodMenu`,`idFoodTitle`),
+  ADD KEY `FK_FoodMenuFoodTitle_FoodTitle_idx` (`idFoodTitle`);
+
+--
+-- Indices de la tabla `foodoption`
+--
+ALTER TABLE `foodoption`
+  ADD PRIMARY KEY (`idFoodOption`),
+  ADD KEY `FK_FoodOption_FoodTitle_idx` (`idFoodTitle`);
+
+--
+-- Indices de la tabla `foodtitle`
+--
+ALTER TABLE `foodtitle`
+  ADD PRIMARY KEY (`idFoodTitle`);
+
+--
 -- Indices de la tabla `gender`
 --
 ALTER TABLE `gender`
@@ -346,7 +523,27 @@ ALTER TABLE `userclient`
 -- AUTO_INCREMENT de la tabla `data`
 --
 ALTER TABLE `data`
-  MODIFY `idData` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `idData` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+--
+-- AUTO_INCREMENT de la tabla `fooditem`
+--
+ALTER TABLE `fooditem`
+  MODIFY `idFoodItem` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT de la tabla `foodmenu`
+--
+ALTER TABLE `foodmenu`
+  MODIFY `idFoodMenu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT de la tabla `foodoption`
+--
+ALTER TABLE `foodoption`
+  MODIFY `idFoodOption` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT de la tabla `foodtitle`
+--
+ALTER TABLE `foodtitle`
+  MODIFY `idFoodTitle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT de la tabla `gender`
 --
@@ -356,7 +553,7 @@ ALTER TABLE `gender`
 -- AUTO_INCREMENT de la tabla `page`
 --
 ALTER TABLE `page`
-  MODIFY `idPage` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `idPage` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT de la tabla `pagetype`
 --
@@ -366,12 +563,12 @@ ALTER TABLE `pagetype`
 -- AUTO_INCREMENT de la tabla `plate`
 --
 ALTER TABLE `plate`
-  MODIFY `idPlate` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `idPlate` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 --
 -- AUTO_INCREMENT de la tabla `template`
 --
 ALTER TABLE `template`
-  MODIFY `idTemplate` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `idTemplate` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT de la tabla `user`
 --
@@ -397,6 +594,32 @@ ALTER TABLE `userclient`
 ALTER TABLE `data`
   ADD CONSTRAINT `FK_Data_Page` FOREIGN KEY (`idPage`) REFERENCES `page` (`idPage`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `FK_Data_Template` FOREIGN KEY (`idTemplate`) REFERENCES `template` (`idTemplate`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `fooditem`
+--
+ALTER TABLE `fooditem`
+  ADD CONSTRAINT `FK_FoodItem_FoodMenu` FOREIGN KEY (`idFoodMenu`) REFERENCES `foodmenu` (`idFoodMenu`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `fooditemfoodoption`
+--
+ALTER TABLE `fooditemfoodoption`
+  ADD CONSTRAINT `FK_FoodItemFoodOption_FoodItem` FOREIGN KEY (`idFoodItem`) REFERENCES `fooditem` (`idFoodItem`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `FK_FoodItemFoodOption_FoodOption` FOREIGN KEY (`idFoodOption`) REFERENCES `foodoption` (`idFoodOption`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `foodmenufoodtitle`
+--
+ALTER TABLE `foodmenufoodtitle`
+  ADD CONSTRAINT `FK_FoodMenuFoodTitle_FoodMenu` FOREIGN KEY (`idFoodMenu`) REFERENCES `foodmenu` (`idFoodMenu`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `FK_FoodMenuFoodTitle_FoodTitle` FOREIGN KEY (`idFoodTitle`) REFERENCES `foodtitle` (`idFoodTitle`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `foodoption`
+--
+ALTER TABLE `foodoption`
+  ADD CONSTRAINT `FK_FoodOption_FoodTitle` FOREIGN KEY (`idFoodTitle`) REFERENCES `foodtitle` (`idFoodTitle`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `page`

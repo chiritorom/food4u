@@ -23,7 +23,7 @@ class Process extends CI_Controller {
 
             <form action="' . base_url() . 'process/editar_plato" method="POST" enctype="multipart/form-data">
               <div class="img-plate">
-                <img src="' . base_url() . 'assets/images/' . $result->image . '" alt="">
+                <img src="' . base_url() . 'assets/images/platos/' . $result->image . '" alt="">
                 <div class="file">
                   <p>Elegir archivo</p>
 
@@ -44,8 +44,9 @@ class Process extends CI_Controller {
                 <label for="">FECHA DE CREACIÓN</label>
                 <input type="text" value="' . $result->date . '" disabled>
                 <label for="">DESCRIPCIÓN</label>
-                <textarea name="descripcion" id="" >' . $result->description . '</textarea>
-                
+                <textarea name="descripcion">' . $result->description . '</textarea>
+                <label for="">INGREDIENTES</label>
+                <textarea name="ingredientes">' . $result->ingredients . '</textarea>
                 <button type="submit">Guardar</button>
                 <button type="text">Cancelar</button> 
               </div>
@@ -65,7 +66,7 @@ class Process extends CI_Controller {
 
             <form action="' . base_url() . 'process/agregar_nuevo_plato" method="POST" enctype="multipart/form-data">
               <div class="img-plate">
-                <img src="' . base_url() . 'assets/images/this-week01.jpg" alt="">
+                <img src="' . base_url() . 'assets/images/img-default.jpg" alt="">
                 <div class="file">
                   <p>
                     Elegir archivo
@@ -82,7 +83,8 @@ class Process extends CI_Controller {
                 <input type="text" name="precio" required>
                 <label for="">DESCRIPCIÓN</label>
                 <textarea name="descripcion" required></textarea>
-                
+                <label for="">INGREDIENTES</label>
+                <textarea name="ingredientes"></textarea>
                 <button type="submit">Agregar</button>
                 <button type="text">Cancelar</button> 
               </div>
@@ -95,13 +97,14 @@ class Process extends CI_Controller {
     $nombre = $this->input->post("nombre");
     $precio = $this->input->post("precio");
     $descripcion = $this->input->post("descripcion");
+    $ingredientes = $this->input->post("ingredientes");
 
-    $config['upload_path'] = './assets/images';
+    $config['upload_path'] = './assets/images/platos/';
     $config['allowed_types'] = 'jpg|png';
     $config['max_size'] = '1000';
     $config['max_width']  = '1024';
     $config['max_height']  = '768';
-
+    $config['file_name'] = $url . ".png";
 
     $this->load->library('upload', $config);
 
@@ -110,7 +113,7 @@ class Process extends CI_Controller {
     } else {
       $data = array('upload_data' => $this->upload->data());
       $imagen = $this->upload->data("file_name");
-      $this->Plate->addPlate($nombre, $precio, $descripcion, $imagen);
+      $this->Plate->addPlate($nombre, $precio, $descripcion, $imagen, $ingredientes);
     }
 
     header("Location: " . base_url() . "admin/platos");
@@ -122,15 +125,16 @@ class Process extends CI_Controller {
     $nombre = $this->input->post("nombre");
     $precio = $this->input->post("precio");
     $descripcion = $this->input->post("descripcion");
+    $ingredientes = $this->input->post("ingredientes");
     $url = $this->input->post("url");
     $imagen = "";
 
-    $config['upload_path'] = './assets/images';
+    $config['upload_path'] = './assets/images/platos/';
     $config['allowed_types'] = 'jpg|png';
     $config['max_size'] = '1000';
     $config['max_width']  = '1024';
     $config['max_height']  = '768';
-
+    $config['file_name'] = $url . ".png";
 
     $this->load->library('upload', $config);
 
@@ -142,7 +146,7 @@ class Process extends CI_Controller {
       
     }
 
-    $this->Plate->updatePlate($id, $nombre, $precio, $descripcion, $imagen, $url);
+    $this->Plate->updatePlate($id, $nombre, $precio, $descripcion, $imagen, $url, $ingredientes);
 
     header("Location: " . base_url() . "admin/platos");
     

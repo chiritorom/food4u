@@ -18,7 +18,7 @@
                     foreach ($this->cart->contents() as $items): 
                         echo '
                         <tr>
-                            <td><img src="' . base_url() . 'assets/images/' . $items["options"]["image"] . '" /></td>
+                            <td><img src="' . base_url() . 'assets/images/platos/' . $items["options"]["image"] . '" /></td>
                             <td>' . $items["qty"] . ' uds.</td>
                             <td>' . $items["name"] . '</td>
                             <td>S/. ' . $this->cart->format_number($items['price'])  . '</td>

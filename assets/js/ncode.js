@@ -72,7 +72,11 @@ $(".add-plate button").on("click", function() {
 		method: "post",
 		success: function(resp) {
 			$("#modal-plate").html(resp);
-				$("#modal-plate").toggle();
+			$('.form-plate .content-form textarea').froalaEditor({
+			  toolbarButtons: ['bold', 'italic', 'underline', 'formatUL', '|', 'align']
+			});
+
+			$("#modal-plate").toggle();
 
 			$('.img-plate input').change(function() {
 		      readURLVHC(this, $(".img-plate img")); 
@@ -80,6 +84,7 @@ $(".add-plate button").on("click", function() {
 			
 			$("#modal-plate .form-plate .button-close a, #modal-plate .form-plate .content-form button:last-child").on("click", function(e) {
 				e.preventDefault();
+
 				$("#modal-plate").toggle();
 			});
 		}

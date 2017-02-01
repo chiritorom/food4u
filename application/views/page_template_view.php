@@ -177,7 +177,7 @@
 							echo '
 							<div class="plato">
 				                <div class="plato-img">
-				                    <div class="plato-accion" style="background: url(' . base_url() . 'assets/images/' . $plate->image . ') center; background-size: cover;"></div>
+				                    <div class="plato-accion" style="background: url(' . base_url() . 'assets/images/platos/' . $plate->image . ') center; background-size: cover;"></div>
 				                    <div class="plato-btn">
 				                        <a href="#" data-action="' . base_url() . 'processUser/agregar_carrito" data-plate="' . $plate->idPlate . ',' . $plate->name . ',' . $plate->price . ',1,' . $plate->image . '">Añadir</a>
 				                        <a href="' . base_url() . $data->url . '/' . $plate->url . '">Ver</a>

@@ -18,7 +18,7 @@ class Plate extends CI_Model {
 		return $result->row();
 	}
 
-	public function addPlate($nombre, $precio, $descripcion, $imagen) {
+	public function addPlate($nombre, $precio, $descripcion, $imagen, $ingredientes) {
 		$config = array(
 		    'table' => 'plate',
 		    'field' => 'url',
@@ -35,7 +35,8 @@ class Plate extends CI_Model {
 		        'description' => $descripcion,
 		        'image' => $imagen,
 		        'date' => date('Y-m-d H:i:s',now("America/Lima")),
-		        'url' => $this->slug->create_uri(array('title' => $nombre))
+		        'url' => $this->slug->create_uri(array('title' => $nombre)),
+		        'ingredients' => $ingredients
 		);
 
 		$this->db->insert('plate', $data);
@@ -50,7 +51,7 @@ class Plate extends CI_Model {
 		$this->db->update('plate', $data);
 	}
 
-	public function updatePlate($id, $nombre, $precio, $descripcion, $imagen, $url) {
+	public function updatePlate($id, $nombre, $precio, $descripcion, $imagen, $url, $ingredientes) {
 
 		$config = array(
 		    'table' => 'plate',
@@ -66,7 +67,8 @@ class Plate extends CI_Model {
 	        'name' => $nombre,
 	        'price' => $precio,
 	        'description' => $descripcion,
-	        'url' => $this->slug->create_uri(array('title' => $url), $id)
+	        'url' => $this->slug->create_uri(array('title' => $url), $id),
+	        'ingredients' => $ingredientes
 		);
 
 		if($imagen != "") {

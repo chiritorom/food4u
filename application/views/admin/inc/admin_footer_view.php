@@ -18,7 +18,6 @@
 	<script type="text/javascript" src="<?= base_url() ?>assets/js/plugins/lists.min.js"></script>
 	<script type="text/javascript" src="<?= base_url() ?>assets/js/plugins/paragraph_format.min.js"></script>
 	<script type="text/javascript" src="<?= base_url() ?>assets/js/plugins/paragraph_style.min.js"></script>
-	<script type="text/javascript" src="<?= base_url() ?>assets/js/plugins/quick_insert.min.js"></script>
 	<script type="text/javascript" src="<?= base_url() ?>assets/js/plugins/quote.min.js"></script>
 	<script type="text/javascript" src="<?= base_url() ?>assets/js/plugins/table.min.js"></script>
 	<script type="text/javascript" src="<?= base_url() ?>assets/js/plugins/save.min.js"></script>

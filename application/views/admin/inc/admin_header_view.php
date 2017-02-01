@@ -28,7 +28,7 @@
 		<div class="profile">
 			<a href="<?= base_url() ?>admin/dashboard">
 				<i class="fa fa-2x fa-user" aria-hidden="true"></i>
-				<p>Bienvenido <br> Carlos Alexander</p>
+				<p>Bienvenido <br> <?= $this->session->userdata('user_admin_name') ?></p>
 			</a>	
 		</div>
 
@@ -37,12 +37,19 @@
 		<ul>
 			<li><a href="<?= base_url() ?>admin/platos"><i class="fa fa-book" aria-hidden="true"></i> Platos</a></li>
 		</ul>
-
+<!--
 		<h2>Páginas</h2>
 
 		<ul>
 			<?php foreach ($this->Page->findAll()->result() as $page) {
 			echo '<li><a href="' . base_url() . 'admin/paginas/' . $page->url . '"><i class="fa fa-book" aria-hidden="true"></i> ' . $page->name . '</a></li>';
 			} ?>
+		</ul>
+-->
+		<h2>Usuarios</h2>
+
+		<ul>
+			<li><a href="<?= base_url() ?>admin/administrador"><i class="fa fa-book" aria-hidden="true"></i> Administrador</a></li>
+			<li><a href="<?= base_url() ?>admin/clientes"><i class="fa fa-book" aria-hidden="true"></i> Clientes</a></li>
 		</ul>
 	</aside>

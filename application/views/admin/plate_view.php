@@ -11,7 +11,7 @@
 				echo '
 				<div class="table-plate">
 					<span>' . ++$i . '</span>
-					<img src="' . base_url() . 'assets/images/' . $plate->image . '" alt="">
+					<img src="' . base_url() . 'assets/images/platos/' . $plate->image . '" alt="">
 					<span>' . $plate->name . '</span>
 
 					<div class="group-action">
