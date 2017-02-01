@@ -5,7 +5,7 @@ class ProcessCalculator extends CI_Controller {
 
 	public function __construct() {
         parent::__construct();
-        $this->load->model("fooditem");
+        $this->load->model("foodItem");
         $this->load->model("foodmenufoodtitle");
         $this->load->model("foodoption");
         $this->load->model("fooditemfoodoption");
@@ -13,7 +13,7 @@ class ProcessCalculator extends CI_Controller {
 
     public function food_item() {
     	$id = $this->input->post("id");
-		$result1 = $this->fooditem->findByFoodMenu($id);
+		$result1 = $this->foodItem->findByFoodMenu($id);
 
 		echo "<option>Selecciona item</option>";
 		foreach ($result1->result_array() as $food_item) {

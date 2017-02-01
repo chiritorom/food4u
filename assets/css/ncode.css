@@ -26,6 +26,10 @@ textarea {
 	border: 0;
 }
 
+.fr-box > div:last-child {
+    display: none;
+}
+
 /* LOGIN */
 
 #nc-login {
@@ -330,13 +334,13 @@ aside ul li a.active {
 
 #modal-plate .form-plate form {
 	display: flex;
-	justify-content: space-between;
+	flex-direction: column;
 }
 
 #modal-plate .form-plate .img-plate {
-	width: 50%;
+	width: 300px;
 	padding: 10px;
-	text-align: center;
+	margin: auto;
 }
 
 #modal-plate .form-plate .img-plate img {
@@ -374,7 +378,7 @@ aside ul li a.active {
 }
 
 #modal-plate .form-plate .content-form {
-	width: 50%;
+	width: 100%;
 	padding: 10px;
 }
 
