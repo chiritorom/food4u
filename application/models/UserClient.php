@@ -40,11 +40,11 @@ class UserClient extends CI_Model {
 
 		if(!$this->findByEmail($dataUser['email']) || ($dataUser['email'] == $this->session->userdata('user_email'))):
 			$this->db->set($data1);
-			$this->db->where('user.idUser', $dataUser['idUser']);
+			$this->db->where('idUser', $dataUser['idUser']);
 			$this->db->update('user');
 
 			$this->db->set($data2);
-			$this->db->where('userclient.idUser', $dataUser['idUser']);
+			$this->db->where('idUser', $dataUser['idUser']);
 			$this->db->update('userclient');
 
 			echo "Datos actualizados correctamente.";

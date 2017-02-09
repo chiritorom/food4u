@@ -60,12 +60,12 @@ class ProcessUser extends CI_Controller {
 
 	public function actualizar_usuario() {
 		$dataUserClient = array(
-			'idUser' => $this->session->userdata('id'),
+			'idUser' => $this->input->post('id'),
 			'nombre' => $this->input->post("nombre"),
 			'apaterno' => $this->input->post("apaterno"),
 			'amaterno' => $this->input->post("amaterno"),
 			'genero' => $this->input->post("genero"),
-			'fecha' => $this->input->post("fecha"),
+			'fecha' => date("Y-d-m", strtotime($this->input->post("fecha"))),
 			'movil' => $this->input->post("movil"),
 			'email' => $this->input->post("email"),
 			'lastEmail' => $this->session->userdata('user_email')

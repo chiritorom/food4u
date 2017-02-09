@@ -180,8 +180,7 @@ $("body").on("click", "#login .form-login, .menu a#inicia-sesion, #mis-platos, #
 		method: "post",
 		data: $me.serialize(),
 		success: function(resp) {
-			
-			alert(resp);
+			messageFunction(resp);
 		}
 	});
   });

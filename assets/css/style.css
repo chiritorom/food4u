@@ -658,7 +658,7 @@ footer {
       border: 1px solid #F37C20; }
 
 #message {
-  position: absolute;
+  position: fixed;
   bottom: 10px;
   left: 50%;
   -webkit-transform: translateX(-50%);
