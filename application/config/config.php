@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/food4u/';
+$config['base_url'] = 'http://192.168.0.6/food4u/';
 
 /*
 |--------------------------------------------------------------------------
@@ -314,7 +314,7 @@ $config['cache_query_string'] = FALSE;
 | https://codeigniter.com/user_guide/libraries/encryption.html
 |
 */
-$config['encryption_key'] = 'FOOD4U-ADMIN';
+$config['encryption_key'] = 'EnCt25f5748e0eca3e754b4f9e67f0a2ecda88b17d5225f5748e0eca3e';
 
 /*
 |--------------------------------------------------------------------------

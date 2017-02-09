@@ -23,7 +23,7 @@
 					echo '<section class="banner">
 			            <video poster="' . base_url() . 'assets/images/' . $ncdata[0] . '" loop autoplay muted>
 			                <source src="' . base_url() . 'assets/video/' . $ncdata[1] . '" type="video/mp4">
-			                Your browser does not support HTML5 video.
+			                Tu navegador no soporta video HTML5.
 			            </video>   
 
 			            <div class="banner-content">
@@ -31,7 +31,7 @@
 			                	<div class="banner-text">
 				                    <h2>' . $ncdata[2] . '</h2>
 				                    <p>' . $ncdata[3] . ' <br>' . $ncdata[4] . '</p>
-				                    <a href="' . $ncdata[6] . '">' . $ncdata[5] . '</a>
+				                    <a href="' . base_url() . $ncdata[6] . '">' . $ncdata[5] . '</a>
 			                    </div>
 			                </div>
 			    	    </div>
@@ -183,9 +183,11 @@
 				                        <a href="' . base_url() . $data->url . '/' . $plate->url . '">Ver</a>
 				                    </div>
 				                </div>
-						         	
-					         	<h3>' . $plate->name . '</h3>
-			                    <p>S/. ' . $plate->price . '</p>
+						         
+						        <div class="plate-description">
+						        	<h3>' . $plate->name . '</h3>
+			                    	<p>S/. ' . $plate->price . '</p>
+						        </div>
 			                </div>';
 			                endforeach;
 			                echo'
@@ -314,7 +316,7 @@
 
 										    <div class="form-profile">
 										    	<form action="' . base_url() . 'processUser/actualizar_usuario">
-
+													<input type="hidden" name="id" value="' . $userData->idUser . '">
 										    		<div class="group-input">
 										    			<label>Nombre</label>
 										    			<input type="text" name="nombre" value="' . $userData->firstName . '">
@@ -346,7 +348,7 @@
 
 										    		<div class="group-input">
 										    			<label>Fecha de nacimiento</label>
-										    			<input type="text" name="fecha" value="' . $userData->birthday . '">
+										    			<input type="text" class="datepick" name="fecha" value="' . $userData->birthday . '">
 										    		</div>
 
 										    		<div class="group-input">
@@ -391,25 +393,9 @@
 										    		</div>
 
 										    		<div class="group-input">
-										    			<label>Género</label>';
-										    			foreach ($findAllGender->result() as $gender):
-										    				if($gender->idGender == $userData->idGender):
-											    				echo '
-												    		<input type="radio" name="genero" value="' . $gender->idGender . '" checked>' . $gender->description;
-												    		else:
-												    			echo '
-												    		<input type="radio" name="genero" value="' . $gender->idGender . '">' . $gender->description;
-												    		endif;
-											    		endforeach;
-											    		echo '
-										    		</div>
-
-										    		<div class="group-input">
 										    			<label>Actividad física</label>
 										    			<input type="text" name="fecha" value="' . $userData->physicalActivity . '">
 										    		</div>
-
-										    		<div class="group-input"></div>
 
 										    		<input type="submit" value="Guardar">
 										    	</form>
@@ -438,8 +424,10 @@
 			    	break;
 			    case 11: 
 			    echo '<div id="calculator">
-						<div class="container">
+						<div class="container calculator-content">
 							<div class="menu">
+								<h2>1 Build Your Meal</h2>
+
 								<select id="select-menu">
 									<option>Selecciona un plato principal</option>';
 									
@@ -454,10 +442,17 @@
 								<div id="title-content"></div>
 							</div>
 
-							<div id="personalize">
+							<div class="personalize-content">
+								<h2>2 Customize </h2>
+
+								<div id="personalize"></div>
 							</div>
 
-							<div class="result"></div>
+							<div class="result-content">
+								<h2>Resultado</h2>
+
+								<div class="result">AS</div>
+							</div>
 						</div>
 					</div>';
 			    	break;

@@ -7,13 +7,17 @@ class User extends CI_Model {
         return $result->row();
 	}
 
-	public function findByEmailAndPassword($email = "", $password = "") {
+	public function findByEmailAndPassword($email, $password) {
+
+		$this->load->library('encrypt');
+
 		$this->db->from('user');
 		$this->db->join('userclient', 'userclient.idUser = user.idUser');
-		$this->db->where(array('user.email' => $email, 'userclient.password' => $password));
+		$this->db->where(array('user.email' => $email));
 		$result = $this->db->get();
-
-		if($result->num_rows() > 0) 
+		$data = $result->row();
+		
+		if($result->num_rows() > 0 && ($this->encrypt->decode($data->password) == $password)) 
 			return true;
 		else 
 			return false;
@@ -28,12 +32,10 @@ class User extends CI_Model {
 			);
 
 			$this->db->insert('user', $data);
-			session_start();
-			$_SESSION["UserClient"] = TRUE;
-			$_SESSION["UserEmail"] = $email;
-			echo "true";
+
+			return true;
 		else:
-			echo "false";
+			return false;
 		endif;
 	}
 

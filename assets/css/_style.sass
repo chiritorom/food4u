@@ -1,0 +1,941 @@
+$primary-color: #F37C20
+$second-color: #231F20
+$second-color-hover: #8E8D8D
+
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,400i,600,600i,700')
+
+*
+	-webkit-box-sizing: border-box
+	-moz-box-sizing: border-box
+	box-sizing: border-box
+
+body
+	font-family: "Raleway", Sans-serif
+	font-size: 16px
+	background: #FFFFFF
+
+input, button
+	font-family: "Raleway", Sans-serif
+
+a
+	text-decoration: none
+
+.container
+	width: 90%
+	max-width: 1000px
+	margin: auto
+
+.stop-scrolling
+	height: 100%
+	overflow: hidden
+
+#Error
+	text-align: center
+
+	a
+		width: 600px
+		margin-top: 10px
+		color: #fff
+		background: #F37C20
+		text-transform: uppercase
+		padding: 10px 20px
+		font-size: 30px
+		font-weight: 600
+
+	.logo
+
+		img
+			margin-top: 20px
+			width: 60px
+
+	.error404
+
+		img
+			width: 400px
+
+header
+	background: #fff
+
+	.menu
+		padding: 10px 0
+		text-align: right
+		background: $primary-color
+
+		a
+			display: inline-block
+			padding: 0 20px
+			-webkit-text-transform: uppercase
+			-moz-text-transform: uppercase
+			-ms-text-transform: uppercase
+			-o-text-transform: uppercase
+			text-transform: uppercase
+			border-right: 2px solid #FFFFFF
+			color: #FFFFFF
+			font-weight: 600
+			font-size: 1em
+
+			&#mis-platos
+				border: 0
+
+			&:hover
+				color: $second-color
+
+		.container
+			position: relative
+
+			#platos	
+				position: absolute
+				background: #FFFFFF
+				z-index: 9998
+				top: 28px
+				right: 0
+				max-height: 300px
+				overflow-y: scroll
+				display: none
+				border: 1px solid #CFCFCF
+				padding: 10px 20px 0 20px
+
+				a
+					color: $second-color
+
+				table
+					max-height: 200px
+
+					tr
+
+						td
+							padding: 5px
+							vertical-align: middle
+							font-weight: 300
+							text-align: left
+
+							&:nth-child(3)
+								padding-right: 50px
+
+							img
+								width: 80px
+								max-height: 80px
+
+	.submenu
+		display: flex
+		padding: 10px 0
+		justify-content: space-between
+
+		.logo 
+
+			a 
+
+				img
+					width: 60px
+
+		nav
+			display: flex
+			align-items: center
+
+			a
+				display: inline-block
+				padding: 0 20px
+				-webkit-text-transform: uppercase
+				-moz-text-transform: uppercase
+				-ms-text-transform: uppercase
+				-o-text-transform: uppercase
+				text-transform: uppercase
+				border-right: 2px solid $primary-color
+				color: $second-color
+				font-weight: 600
+
+				&:last-child
+					border: 0
+
+				&:hover
+					color: $second-color-hover
+
+#ncode 
+
+	.banner
+		position: relative
+		overflow: hidden
+
+		video
+			width: auto
+			height: auto
+			min-width: 100%
+			min-height: 100%
+			position: absolute
+			top: 50%
+			left: 50%
+			-webkit-transform: translate(-50%, -50%)
+			-ms-transform: translate(-50%, -50%)
+			-o-transform: translate(-50%, -50%)
+			transform: translate(-50%, -50%)
+
+		.banner-content
+			z-index: 100
+			position: relative
+			background: rgba(255, 255, 255, 0.7)
+			text-align: center
+			padding: 100px 0
+
+			.banner-text
+
+				h2
+					font-weight: 400
+					color: $second-color
+					border-bottom: 2px solid $second-color
+					padding-bottom: 10px
+					font-size: 2em
+					display: inline-block
+					margin: 0
+
+				p
+					color: $second-color
+					font-size: 1.5em
+					font-weight: 300
+
+				a
+					color: $primary-color
+					background: transparent
+					padding: 5px 30px
+					font-weight: 400
+					border: 2px solid $primary-color
+					font-size: 1.2em
+					display: inline-block
+					margin-top: 20px
+
+					&:hover
+						background: rgba(255, 255, 255, .5)
+
+	.service
+		padding: 50px 0
+		display: flex
+		flex-direction: row
+		flex-wrap: wrap
+
+		.services
+			width: 25%
+			text-align: center
+			padding: 0 10px
+			border-right: 2px solid $primary-color
+
+			&:last-child
+				border: 0
+
+			h3, p
+				margin: 20px 0 0 0
+				font-size: 1em
+
+			h3 
+				font-weight: 600
+
+			p
+				font-weight: 300
+
+			img
+				height: 40px
+
+	.slider
+		text-align: center
+		background: #FFFFFF
+		padding: 30px 0
+
+		h2
+			border-bottom: 1px solid $primary-color
+			margin: 0 0 30px 0
+			padding-bottom: 5px
+			display: inline-block
+			font-weight: 400
+			font-size: 2em
+
+		.slides
+			width: 90%
+			margin: auto
+
+			.slick-f4u-left, .slick-f4u-right
+				color: $primary-color
+				position: absolute
+				top: 50%
+				-webkit-transform: translateY(-50%)
+				-ms-transform: translateY(-50%)
+				-o-transform: translateY(-50%)
+				transform: translateY(-50%)
+				font-size: 90px
+				cursor: pointer
+
+			.slick-f4u-left
+				left: -50px
+
+			.slick-f4u-right
+				right: -50px
+
+			img
+				width: 100%
+				height: 230px
+
+			.this-week
+				margin: 10px
+				text-align: left
+				background: #FFFFFF
+				-webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, .3)
+				box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, .3)
+
+				.thumb
+					padding: 10px
+
+				h3, p
+					margin: 0
+					color: $second-color
+					font-size: 1em
+
+				h3
+					font-weight: 600
+					display: inline-block
+					margin-bottom: 5px
+
+				p
+					font-weight: 400
+
+	.options
+		width: 100%
+
+		.option
+			display: flex
+			flex-direction: row
+			flex-wrap: wrap
+
+			.link-platos
+				width: 50%
+				background: #62842F
+
+				.content
+					float: right
+					width: 100%
+
+				a:hover
+					color: #62842F
+					background: rgba(255, 255, 255, .8)
+
+			.link-mas
+				width: 50%
+				background: #8A551E
+
+				a:hover
+					color: #8A551E
+					background: rgba(255, 255, 255, .8)
+
+			.content
+				max-width: 500px
+				padding: 30px 20px
+
+				h2, p, a
+					color: #FFFFFF
+
+				h2
+					font-weight: 600
+					margin: 0 0 10px 0
+
+				p
+					font-weight: 300
+					font-size: 1em
+					margin: 0 0 20px 0
+
+				a
+					display: inline-block
+					padding: 5px 15px
+					border: 1px solid #FFFFFF
+					font-size: 1em
+					font-weight: 600
+
+	.articles
+		padding: 30px 0
+		text-align: center
+
+		h2
+			border-bottom: 1px solid $primary-color
+			margin: 0 0 30px 0
+			padding-bottom: 5px
+			display: inline-block
+			font-weight: 400
+			font-size: 2em
+
+		.blog
+			display: flex
+			text-align: left
+
+			article
+				width: 50%
+				padding: 20px
+
+			img
+				width: 100%
+				margin-bottom: 10px
+				-webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, .3)
+				box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, .3)
+
+			h3, p
+				text-align: left
+				margin: 0
+
+			h3
+				display: inline-block
+				border-bottom: 1px solid $second-color
+				margin: 15px 0
+
+			p
+				text-align: justify
+
+			a
+				color: $second-color
+				font-weight: 600
+
+	.nuestros-platos
+		padding: 30px 0
+		display: flex
+		justify-content: space-between
+		flex-direction: row
+		flex-wrap: wrap
+
+		.plato
+			width: 32%
+			-webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, .3)
+			box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, .3)
+			margin-bottom: 15px
+
+			.plate-description
+				padding: 10px
+
+				h3
+					font-weight: 600
+					margin: 0 0 5px 0
+
+				p
+					font-weight: 300
+					margin: 0
+
+			.plato-img
+				position: relative
+				overflow: hidden
+				
+
+				.plato-accion
+					width: auto
+					height: auto
+					min-width: 100%
+					min-height: 100%
+					top: 50%
+					left: 50%
+					position: absolute
+					transform: translateX(-50%) translateY(-50%)
+
+				.plato-btn
+					z-index: 100
+					position: relative
+					background-color: rgba(255, 255, 255, 0.7)
+					margin: 150px 0 10px 0
+					padding: 20px 20px 20px 0
+					text-align: right
+
+					a
+						color: $primary-color
+						padding: 2px 15px
+						border: 1px solid $primary-color
+						border-radius: 5px
+						font-size: 1em
+						font-weight: 600
+
+						&:hover
+							background: $primary-color
+							color: #FFFFFF
+
+	.como-funciona
+		padding: 30px 0
+
+		.funcion
+			display: flex
+			border-bottom: 2px solid #FFFFFF
+
+			.icono
+				width: 10%
+				background: $primary-color
+				padding: 20px
+				display: flex
+				align-items: center
+
+				img
+					width: 100%
+
+			.descripcion
+				width: 60%
+				padding: 20px
+
+				h3
+					color: $primary-color
+
+				p
+					font-weight: 300
+					line-height: 23px
+					font-size: 1em
+					text-align: justify
+
+			.imagen
+				width: 30%
+				display: flex
+				align-items: center
+
+				img
+					width: 100%
+
+		.faq
+			text-align: center
+			background: #82A153
+			padding: 30px 0
+
+			label, a
+				color: #FFFFFF
+
+			label
+				margin-right: 20px
+				font-weight: 600
+
+			a
+				border: 1px solid #FFFFFF
+				padding: 5px 20px
+				border-radius: 5px
+
+	.nosotros
+		text-align: center
+		padding: 30px 0
+
+		h2
+			border-bottom: 1px solid $primary-color
+			margin: 0 0 30px 0
+			padding-bottom: 5px
+			display: inline-block
+			font-weight: 400
+			font-size: 2em
+
+		p
+			text-align: justify
+			margin-bottom: 20px
+			font-weight: 300
+
+		.nosotros-img
+			width: 100%
+			height: 300px
+			background-position: center
+			background-size: cover
+			background-repeat: no-repeat
+			-webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, .3)
+			box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, .3)
+
+	.ver-platos
+		background: #8a551e
+		padding: 25px 0
+
+		label, a
+			color: #FFFFFF
+
+		label
+			margin-right: 10px
+			font-weight: 400
+
+		a
+			padding: 5px 15px
+			border: 1px solid #FFFFFF
+			border-radius: 5px
+			font-size: 1em
+
+	.plate
+		display: flex
+		padding: 20px 0
+
+		.img-plate
+			padding-right: 20px
+
+			img
+				width: 400px
+				-webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, .3)
+				box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, .3)
+
+		.description-plate
+
+			h2
+				margin: 0  0 10px 0
+
+			p
+				margin: 0
+
+			& > p
+				margin: 0 0 10px 0
+
+			input[type="number"]
+				border: 0
+				padding: 5px
+				background: #f2f2f2
+				width: 80px
+
+			input[type="submit"]
+				background: #FFFFFF
+				border: 2px solid $primary-color
+				color: $primary-color
+				padding: 2px 10px
+				cursor: pointer
+				font-size: 1em
+				font-weight: 600
+
+			#tabs-plate > ul 
+				padding: 0
+				margin: 20px 0 0 0
+
+				li
+					list-style: none
+					display: inline-block
+
+					a
+						padding: 10px
+						display: inline-block
+						color: $second-color
+						border: 1px solid $primary-color
+						border-bottom: 0
+						font-weight: 600
+
+						&.active
+							background: $primary-color
+							color: #FFFFFF
+
+			#tabs-1, #tabs-2
+				border: 1px solid $primary-color
+				padding: 10px
+				height: 150px
+				width: 500px
+				overflow-y: scroll
+
+	.profile
+
+		#tabs
+			display: flex
+			border: 0
+
+			ul
+				margin: 0
+				padding: 0
+				width: 200px
+				text-align: center
+				background: transparent
+				border: 0
+
+				li
+					list-style: none
+					width: 100%
+					border: 0
+
+					a
+						color: #FFFFFF
+						background: $primary-color
+						display: block
+						width: 100%
+						padding: 10px 0
+						font-weight: 400
+						font-size: 1em
+						border-bottom: 1px solid #FFFFFF
+
+			.content-profile
+				padding: 10px
+				width: 800px
+
+				h2
+					margin: 0
+
+				.form-profile
+
+					form
+						display: flex
+						flex-wrap: wrap
+						justify-content: space-between
+
+						.group-input
+							width: 49%
+
+							label
+								display: block
+								width: 100%
+								margin-bottom: 10px
+								color: $primary-color
+								font-weight: 600
+
+							input[type="text"], 
+							input[type="email"], 
+							input[type="password"]
+								width: 100%
+								margin-bottom: 10px
+								background: #F2F2F2
+								border: 0
+								padding: 5px
+
+footer
+	background: #B8BEBF
+
+	.mail
+		padding: 40px 0
+		text-align: center
+		background: #ececec
+
+		label
+			font-weight: 400
+
+		input
+			font-size: 1em
+			line-height: 1.6em
+			padding: 5px 10px
+			margin-left: 10px
+			width: 250px
+			font-weight: 300
+			border: 0
+
+	.social
+		text-align: center
+		padding: 20px 0 10px 0
+
+		a
+			color: #FFFFFF
+			margin: 0 20px
+
+			&.facebook:hover
+				color: #3B5998
+
+			&.twitter:hover
+				color: #54ABEE
+
+			&.instagram:hover
+				color: #9D7144
+
+			&.youtube:hover
+				color: #EC2828
+
+	.copyright
+		text-align: center
+		padding: 10px 0 20px 0
+
+		h3
+			color: #FFFFFF
+			font-weight: 600
+			font-size: 1em
+
+#login
+	position: fixed
+	background: rgba(0,0,0,.5)
+	top: 0
+	width: 100%
+	height: 100%
+	z-index: 9999
+	text-align: center
+	padding-top: 50px
+	display: none
+
+	.form-login
+		margin: 0 auto
+		background: #FFFFFF
+		width: 700px
+
+		.content-form
+			display: flex
+
+		.item
+			flex-basis: 100%
+			text-align: center
+			padding: 10px 40px
+
+			h2
+				color: $primary-color
+				font-weight: 600
+				-webkit-text-transform: uppercase
+				-moz-text-transform: uppercase
+				-ms-text-transform: uppercase
+				-o-text-transform: uppercase
+				text-transform: uppercase
+
+			input, label, button[type="submit"], a
+				width: 100%
+				margin-bottom: 20px
+
+			button[type="submit"]
+				background: $primary-color
+				border: 0
+				color: #FFFFFF
+				padding: 10px 0
+				-webkit-text-transform: uppercase
+				-moz-text-transform: uppercase
+				-ms-text-transform: uppercase
+				-o-text-transform: uppercase
+				text-transform: uppercase
+				font-weight: 600
+				font-size: 1em
+				cursor: pointer
+
+			input
+				border: 1px solid $primary-color
+				padding: 10px
+				font-size: .8em
+				color: $second-color
+				font-weight: 400
+
+			label, a
+				display: inline-block
+				font-size: 1em
+				font-weight: 400
+				color: $primary-color
+
+		.close
+			display: flex
+			justify-content: end
+			padding: 20px 40px 0 0
+
+			a
+				color: $second-color
+
+				&:hover
+					color: $second-color-hover
+
+.ui-widget 
+	font-family: "Raleway", Sans-serif
+
+#ncode .profile #tabs ul li.ui-tabs-active a
+	color: #FFFFFF
+	background: $second-color
+
+#calculator
+	padding: 30px 0
+
+	.calculator-content
+		display: flex
+		justify-content: space-between
+		
+		& > div
+			width: 32%
+			border: 1px solid $primary-color
+			padding: 10px
+
+		h2
+			text-align: center
+			color: #FFFFFF
+			background: $primary-color
+			padding: 10px 0
+			margin: 0 0 10px 0
+			font-size: 1em
+			font-weight: 600
+
+		select
+			width: 100%
+			margin-bottom: 10px
+			padding: 5px
+			border: 1px solid $primary-color
+
+#message 
+	position: absolute
+	bottom: 10px
+	left: 50%
+	-webkit-transform: translateX(-50%)
+	-moz-transform: translateX(-50%)
+	-ms-transform: translateX(-50%)
+	-o-transform: translateX(-50%)
+	transform: translateX(-50%)
+	background-color: #222
+	padding: 10px 20px
+	border-radius: 20px
+	display: none 
+	z-index: 9999
+
+	p
+		margin: 0
+		color: #fff
+		font-size: 12px
+		font-weight: 600
+
+@media screen and (max-width: 800px)
+	header
+
+		.menu
+			text-align: center
+
+		.submenu
+			display: block
+
+			.logo
+				width: 100%
+				text-align: center
+
+	#ncode
+
+		.service
+
+			.services
+				width: 50%
+				border: 0
+				margin-top: 30px
+
+		.options
+
+			.option
+
+				.content
+					max-width: 100%
+					padding: 30px 0
+
+				.link-platos, .link-mas
+					width: 100%
+
+					.content
+						float: none
+						text-align: center
+						padding: 20px
+
+		.articles
+
+			.blog
+				display: block
+
+				article
+					width: 100%
+
+		.nuestros-platos
+
+			.plato
+				width: 49%
+				margin-bottom: 15px
+
+		.como-funciona
+
+			.funcion
+				display: block
+				border-bottom: 0
+				margin-bottom: 30px
+
+				.icono
+					justify-content: center
+					width: 100%
+
+					img
+						width: 20%
+
+				.descripcion
+					width: 100%
+
+				.imagen
+					width: 100%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -10,10 +10,10 @@
 
     <div class="social">
         <div class="container">
-            <a href="#"><i class="fa fa-2x fa-facebook" aria-hidden="true"></i></a>
-            <a href="#"><i class="fa fa-2x fa-twitter" aria-hidden="true"></i></a>
-            <a href="#"><i class="fa fa-2x fa-instagram" aria-hidden="true"></i></a>
-            <a href="#"><i class="fa fa-2x fa-youtube" aria-hidden="true"></i></a>
+            <a href="#" class="facebook"><i class="fa fa-2x fa-facebook"></i></a>
+            <a href="#" class="twitter"><i class="fa fa-2x fa-twitter"></i></a>
+            <a href="#" class="instagram"><i class="fa fa-2x fa-instagram"></i></a>
+            <a href="#" class="youtube"><i class="fa fa-2x fa-youtube-play"></i></a>
         </div>
     </div>
 
@@ -23,3 +23,7 @@
         </div>
     </div>
 </footer>
+
+<div id="message">
+  <p></p>
+</div>

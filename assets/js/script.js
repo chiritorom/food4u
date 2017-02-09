@@ -1,14 +1,79 @@
+var highestItem = function(div) {
+	var highest = null;
+	var hi = 0;
+	$(div).each(function(){
+	  var h = $(this).height();
+	  if(h > hi){
+	     hi = h;
+	     highest = $(this);  
+	  }    
+	});
+	if(highest != null)
+		$(div).css("height", highest.height());
+}
+highestItem(".services h3");
+highestItem(".options p");
+
 $(document).ready(function(){
 	$( "#tabs" ).tabs();
 	$( "#tabs-plate" ).tabs();
+
+	$(".plate .description-plate #tabs-plate ul li a").on("click", function() {
+		$(".plate .description-plate #tabs-plate ul li a").removeClass("active")
+		$(this).addClass("active")
+	});
+
+	var text_message = $("#message p");
+	var id_message = $("#message");
+
+	var messageFunction = function(msg) {
+	  	text_message.text(msg);
+	  	id_message.fadeIn("slow");
+		setTimeout(function(){
+		id_message.fadeOut("slow");
+		}, 3000);
+	}
+
+	$.datepicker.regional['es'] = {
+		closeText: "Cerrar",
+		prevText: "&#x3C;Ant",
+		nextText: "Sig&#x3E;",
+		currentText: "Hoy",
+		monthNames: [ "enero","febrero","marzo","abril","mayo","junio",
+		"julio","agosto","septiembre","octubre","noviembre","diciembre" ],
+		monthNamesShort: [ "ene","feb","mar","abr","may","jun",
+		"jul","ago","sep","oct","nov","dic" ],
+		dayNames: [ "domingo","lunes","martes","miércoles","jueves","viernes","sábado" ],
+		dayNamesShort: [ "dom","lun","mar","mié","jue","vie","sáb" ],
+		dayNamesMin: [ "D","L","M","X","J","V","S" ],
+		weekHeader: "Sm",
+		dateFormat: "dd/mm/yy",
+		firstDay: 1,
+		isRTL: false,
+		showMonthAfterYear: false,
+		yearSuffix: "" 
+	};
+	$.datepicker.setDefaults($.datepicker.regional['es']);
+
+	var date = new Date();
+
+	$(".datepick").datepicker({
+		changeMonth: true,
+		changeYear: true,
+		yearRange: (date.getFullYear() - 100) + ':' + (date.getFullYear() - 18)
+	});
+
+	$(".datepick").keydown(function() {
+		return false;
+	});
 
   $('.slides').slick({
     infinite: true,
   	slidesToShow: 3,
   	slidesToScroll: 3,
   	arrows: true,
-  	prevArrow: '<button type="button" class="slick-prev">Previous</button>',
-  	nextArrow: '<button type="button" class="slick-next">Next</button>',
+  	prevArrow: '<i class="fa fa-angle-left slick-f4u-left"></i>',
+  	nextArrow: '<i class="fa fa-angle-right slick-f4u-right"></i>',
   	responsive: [
 	    {
 	      breakpoint: 1024,
@@ -36,6 +101,17 @@ $(document).ready(function(){
 	]
 
   });
+
+$('body').click(function() {
+ 	$("#login").fadeOut();
+ 	$('body').removeClass('stop-scrolling');
+ 	$("#platos").fadeOut("slow");
+});
+
+$("body").on("click", "#login .form-login, .menu a#inicia-sesion, #mis-platos, #platos", function(e) {
+	e.stopPropagation();
+});
+
 
   $(".menu a#inicia-sesion").on("click", function(e) {
   	e.preventDefault();
@@ -81,10 +157,14 @@ $(document).ready(function(){
 		success: function(resp) {
 			
 			if(resp == "true") {
-				alert("Ha iniciado sesión correctamente");
-				window.location.replace("perfil");
+				messageFunction("Iniciando sesión...");
+				setTimeout(function() {
+					window.location.replace("perfil");
+				}, 1500);
+				
+				
 			} else {
-				alert("Usuario y/o contraseña incorrecto");
+				messageFunction("Usuario y/o contraseña incorrecto");
 			}
 		}
 	});

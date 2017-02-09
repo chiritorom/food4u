@@ -1,14 +1,14 @@
 <header>
-    <div class="container">
-        <nav class="menu">
-            <?php 
-            if(!$this->session->has_userdata('user_logged_in') || $this->session->userdata('user_logged_in') == FALSE): 
-                echo '<a href="#" id="inicia-sesion">Inicia sesión</a>';
-            elseif($this->session->has_userdata('user_logged_in') && $this->session->userdata('user_logged_in') == TRUE):
-             echo '<a href="' . base_url() . 'perfil">Mi perfíl</a>
-                   <a href="' . base_url() . 'logout">Cerrar sesión</a>';
-            endif;
-            echo '<a href="" id="mis-platos">Mis platos (<span class="count">' . $this->cart->total_items() . '</span>)</a>'; ?>
+    <nav class="menu">
+        <div class="container">
+        <?php 
+        if(!$this->session->has_userdata('user_logged_in') || $this->session->userdata('user_logged_in') == FALSE): 
+            echo '<a href="#" id="inicia-sesion">Inicia sesión</a>';
+        elseif($this->session->has_userdata('user_logged_in') && $this->session->userdata('user_logged_in') == TRUE):
+         echo '<a href="' . base_url() . 'perfil">Mi perfíl</a>
+               <a href="' . base_url() . 'logout">Cerrar sesión</a>';
+        endif;
+        echo '<a href="" id="mis-platos">Mis platos ( <span class="count">' . $this->cart->total_items() . '</span> )</a>'; ?>
             <div id="platos">
                 <div class="platos-load">
                 <a href="<?= base_url() ?>calculador-de-nutricion">Añadir plato personalizado</a>
@@ -31,23 +31,25 @@
                 <p>Total: S/. <?= $this->cart->format_number($this->cart->total()) ?></p>
                 </div>
             </div>
-        </nav>
-
-        <div class="logo">
-            <a href="<?= base_url() ?>"><img src="<?= base_url() ?>assets/images/logo.svg" alt=""></a>
         </div>
-         
-        <nav class="submenu">
-            <?php foreach ($findAll->result() as $page):
-            if($page->idPageType == 2):
-                echo '<a href="' . base_url() . $page->url . '">' . $page->name . '</a>';
-            endif;
-            endforeach; ?>
-        </nav>
+    </nav>
+
+    <div class="container">
+        <div class="submenu">
+            <div class="logo">
+                <a href="<?= base_url() ?>"><img src="<?= base_url() ?>assets/images/logo-food4u.png" alt="FOOD4U"></a>
+            </div>
+
+            <nav>
+                <?php foreach ($findAll->result() as $page):
+                if($page->idPageType == 2):
+                    echo '<a href="' . base_url() . $page->url . '">' . $page->name . '</a>';
+                endif;
+                endforeach; ?>
+            </nav>
+        </div>
     </div>
 </header>
-
-
 
 <?php if(!isset($_SESSION["UserClient"]) || $_SESSION["UserClient"] == FALSE): 
 echo '
@@ -78,6 +80,8 @@ echo '
 
             <form action="' . base_url() . 'processUser/agregar_nuevo_usuario">
                 <input type="email" name="email" placeholder="Correo electrónico" required>
+                <input type="password" name="password" placeholder="Contraseña" required>
+                <input type="password" name="compassword" placeholder="Confirmar contraseña" required>
                 <button type="submit">Registrarme</button>
             </form>
         </div>

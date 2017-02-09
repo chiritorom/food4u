@@ -30,18 +30,48 @@ class ProcessUser extends CI_Controller {
 	}
 
 	public function agregar_nuevo_usuario() {
+		/* RECIBIR DATOS */
 		$email = $this->input->post("email");
-		
-		$this->User->addUser($email);
+		$password = $this->input->post("password");
+		$compassword = $this->input->post("compassword");
 
-		$result1 = $this->User->findByEmail($email);
+		$this->load->library('encrypt');
 
-		$this->UserClient->addUserClient($result1->idUser);
+		if($this->User->addUser($email) == true && ($password == $compassword)):
+			$data = array(
+				'user_email' => $email,
+				'user_logged_in' => TRUE 
+				);
 
+			$this->session->set_userdata($data);
+
+			if($this->User->findByEmail($email)):
+				$result1 = $this->User->findByEmail($email);
+
+				$password = $this->encrypt->encode($password);
+
+				$this->UserClient->addUserClient($result1->idUser, $password);
+			endif;
+			echo "true";
+		else:
+			echo "false";
+		endif;
 	}
 
 	public function actualizar_usuario() {
-		echo "actualizado";
+		$dataUserClient = array(
+			'idUser' => $this->session->userdata('id'),
+			'nombre' => $this->input->post("nombre"),
+			'apaterno' => $this->input->post("apaterno"),
+			'amaterno' => $this->input->post("amaterno"),
+			'genero' => $this->input->post("genero"),
+			'fecha' => $this->input->post("fecha"),
+			'movil' => $this->input->post("movil"),
+			'email' => $this->input->post("email"),
+			'lastEmail' => $this->session->userdata('user_email')
+		);
+
+		$this->UserClient->updateUserClient($dataUserClient);
 		
 	}
 

@@ -11,7 +11,7 @@
 		<div id="Error">
 			<div class="container">
 				<div class="logo">
-					<img class="logo" src="<?= base_url() ?>assets/images/logo.svg" alt="">
+					<img class="logo" src="<?= base_url() ?>assets/images/logo-food4u.png" alt="">
 				</div>
 
 				<div class="error404">

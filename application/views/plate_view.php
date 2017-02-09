@@ -37,7 +37,7 @@
 
 					<div id="tabs-plate">
 					  <ul>
-					    <li><a href="#tabs-1">Descripción</a></li>
+					    <li><a href="#tabs-1" class="active">Descripción</a></li>
 					    <li><a href="#tabs-2">Ingredientes</a></li>
 					  </ul>
 					  <div id="tabs-1">

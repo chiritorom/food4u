@@ -17,11 +17,40 @@ class UserClient extends CI_Model {
 		return $result->row();
 	}
 
-	public function addUserClient($idUser = "") {
+	public function addUserClient($idUser, $password) {
 		$data = array(
-				'idUser' => $idUser
+				'idUser' => $idUser,
+				'password' => $password
 			);
-		$this->db->insert('userClient', $data);
+		$this->db->insert('userclient', $data);
+	}
+	public function updateUserClient($dataUser) {
+		$data1 = array(
+			'firstName' => $dataUser['nombre'],
+			'primaryLastName' => $dataUser['apaterno'],
+			'secondLastName' => $dataUser['amaterno'],
+			'email' => $dataUser['email']
+		);
+
+		$data2 = array(
+			'idGender' => $dataUser['genero'],
+			'birthday' => $dataUser['fecha'],
+			'mobile' => $dataUser['movil']
+		);
+
+		if(!$this->findByEmail($dataUser['email']) || ($dataUser['email'] == $this->session->userdata('user_email'))):
+			$this->db->set($data1);
+			$this->db->where('user.idUser', $dataUser['idUser']);
+			$this->db->update('user');
+
+			$this->db->set($data2);
+			$this->db->where('userclient.idUser', $dataUser['idUser']);
+			$this->db->update('userclient');
+
+			echo "Datos actualizados correctamente.";
+		else:
+			echo "Este email ya existe.";
+		endif;
 	}
 
 }
