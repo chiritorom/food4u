@@ -454,22 +454,27 @@ header {
     cursor: pointer;
     font-size: 1em;
     font-weight: 600; }
-  #ncode .plate .description-plate #tabs-plate > ul {
-    padding: 0;
-    margin: 20px 0 0 0; }
-    #ncode .plate .description-plate #tabs-plate > ul li {
-      list-style: none;
-      display: inline-block; }
-      #ncode .plate .description-plate #tabs-plate > ul li a {
-        padding: 10px;
+  #ncode .plate .description-plate #tabs-plate {
+    border: 0; }
+    #ncode .plate .description-plate #tabs-plate > ul {
+      padding: 0;
+      margin: 20px 0 0 0;
+      background: transparent;
+      border: 0; }
+      #ncode .plate .description-plate #tabs-plate > ul li {
+        list-style: none;
         display: inline-block;
-        color: #231F20;
-        border: 1px solid #F37C20;
-        border-bottom: 0;
-        font-weight: 600; }
-        #ncode .plate .description-plate #tabs-plate > ul li a.active {
-          background: #F37C20;
-          color: #FFFFFF; }
+        background: transparent; }
+        #ncode .plate .description-plate #tabs-plate > ul li a {
+          padding: 10px;
+          display: inline-block;
+          color: #231F20;
+          border: 1px solid #F37C20;
+          border-bottom: 0;
+          font-weight: 600; }
+          #ncode .plate .description-plate #tabs-plate > ul li a.active {
+            background: #F37C20;
+            color: #FFFFFF; }
   #ncode .plate .description-plate #tabs-1, #ncode .plate .description-plate #tabs-2 {
     border: 1px solid #F37C20;
     padding: 10px;

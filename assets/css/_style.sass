@@ -582,25 +582,31 @@ header
 				font-size: 1em
 				font-weight: 600
 
-			#tabs-plate > ul 
-				padding: 0
-				margin: 20px 0 0 0
+			#tabs-plate
+				border: 0
+			
+				& > ul
+					padding: 0
+					margin: 20px 0 0 0
+					background: transparent
+					border: 0
 
-				li
-					list-style: none
-					display: inline-block
-
-					a
-						padding: 10px
+					li
+						list-style: none
 						display: inline-block
-						color: $second-color
-						border: 1px solid $primary-color
-						border-bottom: 0
-						font-weight: 600
+						background: transparent
 
-						&.active
-							background: $primary-color
-							color: #FFFFFF
+						a
+							padding: 10px
+							display: inline-block
+							color: $second-color
+							border: 1px solid $primary-color
+							border-bottom: 0
+							font-weight: 600
+
+							&.active
+								background: $primary-color
+								color: #FFFFFF
 
 			#tabs-1, #tabs-2
 				border: 1px solid $primary-color

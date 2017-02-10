@@ -1,3 +1,5 @@
+var urlbase = "http://192.168.0.6/food4u/";
+
 var highestItem = function(div) {
 	var highest = null;
 	var hi = 0;
@@ -217,7 +219,7 @@ $("body").on("click", "#login .form-login, .menu a#inicia-sesion, #mis-platos, #
   		var id = $(this).attr("data-id");
 		
 		$.ajax({
-			url: "processUser/eliminar_item",
+			url: urlbase +  "processUser/eliminar_item",
 			method: "post",
 			data: {
 				id: id
@@ -225,6 +227,7 @@ $("body").on("click", "#login .form-login, .menu a#inicia-sesion, #mis-platos, #
 			success: function() {
 				$("#platos").load("#platos .platos-load");
 				$("#mis-platos > span").load("#mis-platos span.count");
+				messageFunction("Plato eliminado del carrito");
 			}
 		});
 	});
@@ -256,7 +259,7 @@ $("body").on("click", "#login .form-login, .menu a#inicia-sesion, #mis-platos, #
   	var per = "";
 
   	$.ajax({
-  		url: "processCalculator/food_title",
+  		url: urlbase + "processCalculator/food_title",
   		method: "post",
   		data: {
   			id: id,
@@ -288,7 +291,7 @@ $("body").on("click", "#login .form-login, .menu a#inicia-sesion, #mis-platos, #
 
   			$("#title-content input[type='checkbox']").mousedown(function() {
   				var id = $(this).val();
-  				alert($(".content-option button[data-id='" + id + "']").attr("data-id"));
+  				messageFunction($(".content-option button[data-id='" + id + "']").attr("data-id"));
 
   				if($(".content-option button[data-id='" + id + "']").attr("data-id") == id) {
   					$(this).parent().remove();
@@ -310,7 +313,7 @@ $("body").on("click", "#login .form-login, .menu a#inicia-sesion, #mis-platos, #
 	  		method: $me.attr("method"),
 	  		data: $me.serialize(),
 	  		success: function(resp) {
-	  			alert(resp);
+	  			messageFunction(resp);
 	  			$("#platos").load("#platos .platos-load");
 				$("#mis-platos > span").load("#mis-platos span.count");
 	  		}
