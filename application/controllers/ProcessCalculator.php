@@ -6,9 +6,9 @@ class ProcessCalculator extends CI_Controller {
 	public function __construct() {
         parent::__construct();
         $this->load->model("foodItem");
-        $this->load->model("foodmenufoodtitle");
-        $this->load->model("foodoption");
-        $this->load->model("fooditemfoodoption");
+        $this->load->model("foodMenuFoodTitle");
+        $this->load->model("foodOption");
+        $this->load->model("foodItemFoodOption");
     }
 
     public function food_item() {
@@ -25,13 +25,13 @@ class ProcessCalculator extends CI_Controller {
 	public function food_title() {
 		$id = $this->input->post("id");
 		$id_menu = $this->input->post("id_menu");
-		$result1 = $this->foodmenufoodtitle->findByFoodMenu($id);
-		$result2 = $this->foodoption->findAll();
-		$result3 = $this->fooditemfoodoption->findByFoodItem();
+		$result1 = $this->foodMenuFoodTitle->findByFoodMenu($id);
+		$result2 = $this->foodOption->findAll();
+		$result3 = $this->foodItemFoodOption->findByFoodItem();
 
 		//ALGORITMO DEL CALCULADOR DE NUTRICIÓN
 		foreach ($result1->result_array() as $food_title):
-			echo '<label>' . $food_title["description"] . '</label><br>';
+			echo '<label>' . $food_title["description"] . '</label>';
 
 			foreach ($result2->result_array() as $food_option):
 				$check = "";
@@ -43,10 +43,21 @@ class ProcessCalculator extends CI_Controller {
 						endif;
 					endforeach;
 
-					echo '<input type="checkbox" name="option' . $food_option["idFoodOption"] . '" value=" ' . $food_option["idFoodOption"] . ' "' . $check . '> <span>' . $food_option["description"] . '</span><br>';
+					echo '<input type="checkbox" name="option' . $food_option["idFoodOption"] . '" value="' . $food_option["idFoodOption"] . '"' . $check . '> <span>' . $food_option["description"] . '</span><br>';
 				endif;
 			endforeach;
 			echo '<br>';
 		endforeach;
+	}
+
+	public function food_custom() {
+
+		if($this->input->post("custom")):
+		    $data = json_decode($_POST["custom"]);
+		    $id = $data->id;
+		    foreach($id as $singular) {
+		       print_r ($id);
+		    }
+	    endif;
 	}
 }

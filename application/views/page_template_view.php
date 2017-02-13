@@ -445,7 +445,11 @@
 							<div class="personalize-content">
 								<h2>2 Customize </h2>
 
+								<form>
 								<div id="personalize"></div>
+
+								<input type="submit" value="Agregar al carrito">
+								</form>
 							</div>
 
 							<div class="result-content">

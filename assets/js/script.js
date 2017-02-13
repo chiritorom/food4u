@@ -1,4 +1,4 @@
-var urlbase = "http://192.168.0.6/food4u/";
+var urlbase = "http://localhost/food4u/";
 
 var highestItem = function(div) {
 	var highest = null;
@@ -256,7 +256,7 @@ $("body").on("click", "#login .form-login, .menu a#inicia-sesion, #mis-platos, #
   	var $me = $(this);
   	var id = $me.val();
   	var id_menu = $('#select-item option:selected').attr("data-menu");
-  	var per = "";
+  	var per = '<div class="content-option"></div>';
 
   	$.ajax({
   		url: urlbase + "processCalculator/food_title",
@@ -276,32 +276,71 @@ $("body").on("click", "#login .form-login, .menu a#inicia-sesion, #mis-platos, #
   				for(var j = 0; j<array_option_length; j++) {
 	  				if((i+1) == array_option[j]) {
 	  					var name = $("input[name='option" + (i+1) + "'] + span").html();
-	  					per += '<div class="content-option""><input type="number" value="1" min="1"><label for="">' + name + '</label><button class="delete-option" data-id="' + (i+1) + '">X</button></div><br>';
+	  					per += '<div class="content-option"><input type="number" data-id="' + (i+1) + '" value="1" min="1"><label for="">' + name + '</label><button class="delete-option" data-id="' + (i+1) + '"><i class="fa fa-times"></i></button></div>';
 	  				}
 	  			}
   			}
 
-  			$("#personalize").html(per);
+  			
 
-  			$(".delete-option").on("click", function() {
+  			$("body").on("click", ".delete-option", function() {
   				var data_id = $(this).attr("data-id");
+
   				$("input[name='option" + data_id + "']").attr("checked", false);
   				$(this).parent().remove();
+  				
   			});
 
-  			$("#title-content input[type='checkbox']").mousedown(function() {
+  			$("#title-content input[type='checkbox']").on("click", function() {
   				var id = $(this).val();
-  				messageFunction($(".content-option button[data-id='" + id + "']").attr("data-id"));
 
-  				if($(".content-option button[data-id='" + id + "']").attr("data-id") == id) {
-  					$(this).parent().remove();
+  				if($(".content-option button[data-id=" + id + "]").attr("data-id") == id) {
+  					$(".content-option button[data-id=" + id + "]").parent().remove();
+  					
   				} else {
-  					$(".content-option:last-child").append("mi ultimo div");
+  					var name = $("input[name='option" + id + "'] + span").html();
+	  				var	per = '<div class="content-option"><input type="number" data-id="" ' + id + ' value="1" min="1"><label for="">' + name + '</label><button class="delete-option" data-id="' + id + '"><i class="fa fa-times"></i></button></div>';
+  					$(".content-option:last-child").parent().append(per);
   				}
   			});
+
+			$("#personalize").html(per);
   		}
   	});
   });
+
+	$(".personalize-content form").on("submit", function(e) {
+		e.preventDefault();
+
+		var id = new Array();
+		var cant = new Array();
+		var index = 0;
+
+		$(".personalize-content form input[type=number]").each(function() {
+			
+				id.push($(this).attr("data-id"));
+				cant.push($(this).val());
+			
+		});
+
+		var params = {
+			id: id, 
+			cant: cant 
+		};
+
+		var paramJSON = JSON.stringify(params);
+
+		$.ajax({
+	  		url: urlbase + "processCalculator/food_custom",
+	  		method: "post",
+	  		data: {
+	  			custom: paramJSON
+	  		},
+	  		success: function(resp) {
+	  			messageFunction(resp);
+	  		}
+	  	});
+	});
 
 	$("body").on("submit", "form#countPlate", function(e) {
 		e.preventDefault();

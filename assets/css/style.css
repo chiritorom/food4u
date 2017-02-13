@@ -656,11 +656,24 @@ footer {
       margin: 0 0 10px 0;
       font-size: 1em;
       font-weight: 600; }
+    #calculator .calculator-content label {
+      display: block;
+      font-weight: 600; }
     #calculator .calculator-content select {
       width: 100%;
       margin-bottom: 10px;
       padding: 5px;
       border: 1px solid #F37C20; }
+    #calculator .calculator-content .personalize-content .content-option {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      margin-bottom: 10px; }
+      #calculator .calculator-content .personalize-content .content-option input[type="number"] {
+        width: 100px; }
+      #calculator .calculator-content .personalize-content .content-option button {
+        cursor: pointer; }
 
 #message {
   position: fixed;
